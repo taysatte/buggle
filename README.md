@@ -12,7 +12,7 @@ a sense of community.
 ### Todo List 📃
 
 * **Core Functionality:**
-    * \[ ] Implement basic code editor component
+    * \[x] Implement basic code editor component
     * \[ ] Create daily challenge generation/selection logic (manual for MVP)
     * \[ ] Develop client-side automated testing for solution validation
     * \[ ] Implement basic feedback mechanism (correct/incorrect)
