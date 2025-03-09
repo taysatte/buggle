@@ -4,7 +4,6 @@ import { editor } from "monaco-editor";
 import IEditor = editor.IEditor;
 import { Card } from "@/components/ui/card";
 import Output from "@/components/Output";
-import SubmitButton from "@/components/SubmitButton";
 
 interface Props {
   code: string;
@@ -15,11 +14,6 @@ interface Props {
 const CodeEditor = ({ code, theme, language }: Props) => {
   const editorRef = useRef<IEditor>(null);
   const [value, setValue] = useState(code);
-
-  const onMount = (editor: IEditor) => {
-    editorRef.current = editor;
-    editor.focus();
-  };
 
   const options = {
     fontFamily: "Fira Code",
@@ -43,7 +37,8 @@ const CodeEditor = ({ code, theme, language }: Props) => {
         <Card className="w-full h-full p-0 rounded-lg overflow-hidden">
           <Editor
             theme={theme}
-            defaultLanguage={language}
+            defaultLanguage={"javascript"}
+            language={language}
             options={options}
             value={value}
             onChange={(newValue: string | undefined) => {
@@ -52,12 +47,26 @@ const CodeEditor = ({ code, theme, language }: Props) => {
                 console.log(newValue);
               }
             }}
-            onMount={onMount}
+            onMount={(editor, monaco) => {
+              editorRef.current = editor;
+
+              // setting custom theme future ref
+              monaco.editor.defineTheme("buggle-theme", {
+                base: "vs-dark",
+                inherit: true,
+                colors: {
+                  "editor.background": "#0A0A0AFF",
+                  "editor.lineHighlightBackground": "#252525FF",
+                },
+                rules: [],
+              });
+              monaco.editor.setTheme("buggle-theme");
+              editor.focus();
+            }}
           />
         </Card>
         <div className="flex w-full h-full flex-col">
-          <Output />
-          <SubmitButton />
+          <Output editorRef={editorRef} language={language} />
         </div>
       </Card>
     </>
