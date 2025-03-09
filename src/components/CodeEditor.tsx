@@ -2,6 +2,9 @@ import { useRef, useState } from "react";
 import { Editor } from "@monaco-editor/react";
 import { editor } from "monaco-editor";
 import IEditor = editor.IEditor;
+import { Card } from "@/components/ui/card";
+import Output from "@/components/Output";
+import SubmitButton from "@/components/SubmitButton";
 
 interface Props {
   code: string;
@@ -9,7 +12,7 @@ interface Props {
   language: string;
 }
 
-export default function CodeEditor({ code, theme, language }: Props) {
+const CodeEditor = ({ code, theme, language }: Props) => {
   const editorRef = useRef<IEditor>(null);
   const [value, setValue] = useState(code);
 
@@ -36,20 +39,29 @@ export default function CodeEditor({ code, theme, language }: Props) {
 
   return (
     <>
-      <div className="h-full w-full border border-gray-700 rounded-lg overflow-hidden">
-        <Editor
-          theme={theme}
-          defaultLanguage={language}
-          options={options}
-          value={value}
-          onChange={(newValue: string | undefined) => {
-            if (newValue !== undefined) {
-              setValue(newValue);
-            }
-          }}
-          onMount={onMount}
-        />
-      </div>
+      <Card className="flex flex-row h-dvh w-full p-4 border-0 rounded-lg">
+        <Card className="w-full h-full p-0 rounded-lg overflow-hidden">
+          <Editor
+            theme={theme}
+            defaultLanguage={language}
+            options={options}
+            value={value}
+            onChange={(newValue: string | undefined) => {
+              if (newValue !== undefined) {
+                setValue(newValue);
+                console.log(newValue);
+              }
+            }}
+            onMount={onMount}
+          />
+        </Card>
+        <div className="flex w-full h-full flex-col">
+          <Output />
+          <SubmitButton />
+        </div>
+      </Card>
     </>
   );
-}
+};
+
+export default CodeEditor;

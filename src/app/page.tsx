@@ -1,7 +1,6 @@
 "use client";
 
 import CodeEditor from "@/components/CodeEditor";
-import SubmitButton from "../components/SubmitButton";
 
 export default function App() {
   const theme = "vs-dark";
@@ -28,9 +27,8 @@ export default function App() {
 
   return (
     <>
-      <div className="p-4 flex flex-col items-center justify-start h-screen w-1/2 py-4">
+      <div className="h-screen w-full">
         <CodeEditor code={problem} theme={theme} language={"javascript"} />
-        <SubmitButton />
       </div>
     </>
   );

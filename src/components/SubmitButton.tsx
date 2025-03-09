@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const SubmitButton = () => {
   return (
-    <Button className="cursor-pointer w-full h-[50px] mt-2" variant="outline">
+    <Button className="cursor-pointer h-[50px] mt-2" variant="outline">
       Submit
     </Button>
   );
