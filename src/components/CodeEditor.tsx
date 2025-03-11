@@ -66,7 +66,11 @@ const CodeEditor = ({ code, theme, language }: Props) => {
           />
         </Card>
         <div className="flex w-full h-full flex-col">
-          <Output editorRef={editorRef} language={language} />
+          <Output
+            editorRef={editorRef}
+            language={language}
+            challengeId={"sum-array"}
+          />
         </div>
       </Card>
     </>
