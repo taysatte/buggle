@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "buggle 🪲",
+  title: "buggle",
   description: "The daily code bug challenge.",
 };
 
