@@ -1,4 +1,4 @@
-export const executeCode = async (language: string, sourceCode: string) => {
+export const execute = async (language: string, sourceCode: string) => {
   try {
     const response = await fetch("https://emkc.org/api/v2/piston/execute", {
       method: "POST",
