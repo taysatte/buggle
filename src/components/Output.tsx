@@ -58,19 +58,19 @@ const Output = ({ editorRef, language, challengeId }: Props) => {
 
   return (
     <>
-      <Card className="h-full w-full p-4 rounded-lg">
+      <Card className="h-full w-full p-4 rounded-lg border-2">
         {isLoading ? (
           <div className="flex items-center justify-center h-full">
             <Loader2 className="animate-spin h-6 w-6 mr-2" /> Loading...
           </div>
         ) : (
-          <div className="text-gray-600">
+          <div className="text-gray-500">
             {output.map((line, i) => (
               <div key={i}>{line}</div>
             ))}
             {testsPassed !== null && (
               <div
-                className={`mt-2 ${testsPassed ? "text-green-500" : "text-red-500"}`}
+                className={`${testsPassed ? "text-green-500" : "text-destructive-foreground"}`}
               >
                 {testsPassed ? "Tests Passed!" : "Tests Failed!"}
               </div>
@@ -79,7 +79,7 @@ const Output = ({ editorRef, language, challengeId }: Props) => {
         )}
       </Card>
       <Button
-        className="cursor-pointer h-[50px] text-[1.1rem] mt-4"
+        className="cursor-pointer h-[50px] border-2 text-[1.1rem] mt-4"
         variant="outline"
         onClick={runCode}
         disabled={isLoading}

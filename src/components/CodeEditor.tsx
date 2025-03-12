@@ -27,14 +27,14 @@ const CodeEditor = ({ code, theme, language }: Props) => {
     fontLigatures: true,
     padding: {
       bottom: 0,
-      top: 10,
+      top: 15,
     },
   };
 
   return (
     <>
       <Card className="flex flex-row h-dvh w-full p-4 border-0 rounded-lg">
-        <Card className="w-full h-full p-0 rounded-lg overflow-hidden">
+        <Card className="w-full h-full p-0 rounded-lg border-2 overflow-hidden">
           <Editor
             theme={theme}
             defaultLanguage={"javascript"}
