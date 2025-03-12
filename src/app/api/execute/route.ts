@@ -1,8 +1,8 @@
-// src/app/api/execute/route.ts
-
 import { NextResponse } from "next/server";
 import { execute } from "@/lib/piston";
 import { challenges } from "@/lib/challenges";
+import { transpileCode } from "@/lib/transpile";
+import vm from "vm";
 
 export async function POST(request: Request) {
   try {
@@ -29,13 +29,24 @@ export async function POST(request: Request) {
     let testsPassed = true;
     for (const testCase of challenge.testCases) {
       try {
-        const userResult = eval(`${sourceCode} ${testCase.input}`);
-        if (userResult !== testCase.expectedOutput) {
+        const transpiledCode = transpileCode(sourceCode);
+        if (!transpiledCode) {
           testsPassed = false;
           break;
         }
-      } catch (evalError) {
-        console.error("Eval error:", evalError);
+
+        const context = { output: null };
+        vm.runInNewContext(
+          `${transpiledCode}; output = ${testCase.input};`,
+          context,
+        );
+
+        if (context.output !== testCase.expectedOutput) {
+          testsPassed = false;
+          break;
+        }
+      } catch (vmError) {
+        console.error("VM error:", vmError);
         testsPassed = false;
         break;
       }

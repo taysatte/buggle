@@ -1,4 +1,6 @@
-export const challenges = [
+import { Challenge } from "@/types/challenge";
+
+export const challenges: Challenge[] = [
   {
     id: "sum-array",
     title: "Sum Array",
