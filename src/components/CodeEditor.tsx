@@ -4,6 +4,7 @@ import { editor } from "monaco-editor";
 import IEditor = editor.IEditor;
 import { Card } from "@/components/ui/card";
 import Output from "@/components/Output";
+import { BUGGLE_THEME } from "@/lib/themes";
 
 interface Props {
   code: string;
@@ -33,11 +34,10 @@ const CodeEditor = ({ code, theme, language }: Props) => {
 
   return (
     <>
-      <Card className="flex flex-row h-dvh w-full p-4 border-0 rounded-lg">
+      <Card className="flex flex-col w-full h-[1000px] border-0 rounded-xl p-0 gap-6">
         <Card className="w-full h-full p-0 rounded-lg border-2 overflow-hidden">
           <Editor
             theme={theme}
-            defaultLanguage={"javascript"}
             language={language}
             options={options}
             value={value}
@@ -49,23 +49,13 @@ const CodeEditor = ({ code, theme, language }: Props) => {
             }}
             onMount={(editor, monaco) => {
               editorRef.current = editor;
-
-              // setting custom theme future ref
-              monaco.editor.defineTheme("buggle-theme", {
-                base: "vs-dark",
-                inherit: true,
-                colors: {
-                  "editor.background": "#0A0A0AFF",
-                  "editor.lineHighlightBackground": "#252525FF",
-                },
-                rules: [],
-              });
+              monaco.editor.defineTheme("buggle-theme", BUGGLE_THEME);
               monaco.editor.setTheme("buggle-theme");
               editor.focus();
             }}
           />
         </Card>
-        <div className="flex w-full h-full flex-col">
+        <div className="flex w-full">
           <Output
             editorRef={editorRef}
             language={language}

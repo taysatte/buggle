@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
 const interSans = Inter({
   variable: "--font-inter",
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${interSans.variable} antialiased dark`}>
+        <Navbar />
         {children}
       </body>
     </html>

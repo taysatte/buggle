@@ -1,5 +1,3 @@
-// src/components/Output.tsx
-
 import { Card } from "@/components/ui/card";
 import { editor } from "monaco-editor";
 import IEditor = editor.IEditor;
@@ -10,15 +8,15 @@ import { Loader2 } from "lucide-react";
 interface Props {
   editorRef: RefObject<IEditor | null>;
   language: string;
-  challengeId: string; // Add challengeId prop
+  challengeId: string;
 }
 
 const Output = ({ editorRef, language, challengeId }: Props) => {
   const [output, setOutput] = useState<string[]>([
-    "Click 'Submit' to see the output here...",
+    'click "submit" to see the output here...',
   ]);
   const [isLoading, setIsLoading] = useState(false);
-  const [testsPassed, setTestsPassed] = useState<boolean | null>(null); // Track test results
+  const [testsPassed, setTestsPassed] = useState<boolean | null>(null);
 
   const runCode = async () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -58,34 +56,36 @@ const Output = ({ editorRef, language, challengeId }: Props) => {
 
   return (
     <>
-      <Card className="h-full w-full p-4 rounded-lg border-2">
-        {isLoading ? (
-          <div className="flex items-center justify-center h-full">
-            <Loader2 className="animate-spin h-6 w-6 mr-2" /> Loading...
-          </div>
-        ) : (
-          <div className="text-gray-500">
-            {output.map((line, i) => (
-              <div key={i}>{line}</div>
-            ))}
-            {testsPassed !== null && (
-              <div
-                className={`${testsPassed ? "text-green-500" : "text-destructive-foreground"}`}
-              >
-                {testsPassed ? "Tests Passed!" : "Tests Failed!"}
-              </div>
-            )}
-          </div>
-        )}
-      </Card>
-      <Button
-        className="cursor-pointer h-[50px] border-2 text-[1.1rem] mt-4"
-        variant="outline"
-        onClick={runCode}
-        disabled={isLoading}
-      >
-        {isLoading ? "Loading..." : "Submit"}
-      </Button>
+      <div className="flex flex-col w-full h-full gap-6">
+        <Card className="h-[250px] w-full p-4 rounded-xl border-2 font-output-window text-[1rem]">
+          {isLoading ? (
+            <div className="flex items-center justify-center h-full">
+              <Loader2 className="animate-spin h-6 w-6 mr-2" /> loading...
+            </div>
+          ) : (
+            <div className="text-neutral-500">
+              {output.map((line, i) => (
+                <div key={i}>{line}</div>
+              ))}
+              {testsPassed !== null && (
+                <div
+                  className={`${testsPassed ? "text-green-500" : "text-destructive-foreground"}`}
+                >
+                  {testsPassed ? "tests passed!" : "tests failed!"}
+                </div>
+              )}
+            </div>
+          )}
+        </Card>
+        <Button
+          className="cursor-pointer h-[50px] border-2 text-[1.1rem]"
+          variant="outline"
+          onClick={runCode}
+          disabled={isLoading}
+        >
+          {isLoading ? "loading..." : "submit"}
+        </Button>
+      </div>
     </>
   );
 };

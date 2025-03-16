@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { execute } from "@/lib/piston";
-import { challenges } from "@/lib/challenges";
+import { TEST_CHALLENGES } from "@/constants";
 import { transpileCode } from "@/lib/transpile";
 import vm from "vm";
 
@@ -15,7 +15,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const challenge = challenges.find((c) => c.id === challengeId);
+    const challenge = TEST_CHALLENGES.find((c) => c.id === challengeId);
 
     if (!challenge) {
       return NextResponse.json(
