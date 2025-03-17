@@ -34,8 +34,8 @@ const CodeEditor = ({ code, theme, language }: Props) => {
 
   return (
     <>
-      <Card className="flex flex-col w-full h-[1000px] border-0 rounded-xl p-0 gap-6">
-        <Card className="w-full h-full p-0 rounded-lg border-2 overflow-hidden">
+      <Card className="flex flex-col w-full h-[900px] border-0 rounded-xl p-0 gap-6">
+        <Card className="w-full h-full p-0 rounded-lg border-1 overflow-hidden">
           <Editor
             theme={theme}
             language={language}
@@ -44,7 +44,6 @@ const CodeEditor = ({ code, theme, language }: Props) => {
             onChange={(newValue: string | undefined) => {
               if (newValue !== undefined) {
                 setValue(newValue);
-                console.log(newValue);
               }
             }}
             onMount={(editor, monaco) => {

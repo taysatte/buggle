@@ -10,7 +10,7 @@ export default function App() {
 
   return (
     <>
-      <div className="h-full w-full px-40 py-6">
+      <div className="h-full px-60 max-w-screen py-6">
         <CodeEditor code={challenge} theme={theme} language={language} />
       </div>
     </>

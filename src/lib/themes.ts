@@ -6,16 +6,7 @@ const BASE_THEME = "vs-dark";
 export const BUGGLE_THEME: editor.IStandaloneThemeData = {
   base: BASE_THEME,
   inherit: true,
-  rules: [
-    {
-      foreground: "9AE92B",
-      token: "keyword",
-    },
-    {
-      foreground: "494949",
-      token: "comment",
-    },
-  ],
+  rules: [],
   colors: {
     "editor.background": "#0a0a0a",
     "editor.foreground": "#ffffff",
