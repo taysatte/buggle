@@ -57,7 +57,7 @@ const Output = ({ editorRef, language, challengeId }: Props) => {
   return (
     <>
       <div className="flex flex-col w-full h-full gap-6">
-        <Card className="h-[250px] w-full p-4 rounded-xl border-1 font-mono-default text-[1rem]">
+        <Card className="h-[250px] w-full p-4 rounded-xl border-2 font-mono-default text-[1rem]">
           {isLoading ? (
             <div className="flex items-center justify-center h-full">
               <Loader2 className="animate-spin h-6 w-6 mr-2" /> loading...
@@ -78,7 +78,7 @@ const Output = ({ editorRef, language, challengeId }: Props) => {
           )}
         </Card>
         <Button
-          className="cursor-pointer h-[50px] border-1 text-[1.1rem]"
+          className="cursor-pointer h-[50px] border-2 text-[1.1rem]"
           variant="outline"
           onClick={runCode}
           disabled={isLoading}
