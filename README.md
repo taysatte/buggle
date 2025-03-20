@@ -24,7 +24,7 @@ their debugging skills and foster a sense of community.
 - **User Interface (UI):**
 
   - [ ] Design a minimal and user-friendly UI.
-  - [ ] Implement syntax highlighting for code editor.
+  - [x] Implement syntax highlighting for code editor.
   - [ ] Create basic instructions for the challenge.
 
 - **Progress Tracking:**

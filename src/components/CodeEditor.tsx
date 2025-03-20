@@ -2,18 +2,20 @@ import { useRef, useState } from "react";
 import { Editor } from "@monaco-editor/react";
 import { editor } from "monaco-editor";
 import IEditor = editor.IEditor;
-import { Card } from "@/components/ui/card";
 import Output from "@/components/Output";
+import { BUGGLE_THEME } from "@/lib/themes";
+import { Challenge } from "@/types/challenge";
+import { Card } from "./ui/card";
 
-interface Props {
-  code: string;
+type CodeEditorProps = {
+  challenge: Challenge;
   theme: string;
   language: string;
-}
+};
 
-const CodeEditor = ({ code, theme, language }: Props) => {
+const CodeEditor = ({ challenge, theme, language }: CodeEditorProps) => {
   const editorRef = useRef<IEditor>(null);
-  const [value, setValue] = useState(code);
+  const [value, setValue] = useState(challenge.code);
 
   const options = {
     fontFamily: "Fira Code",
@@ -27,52 +29,38 @@ const CodeEditor = ({ code, theme, language }: Props) => {
     fontLigatures: true,
     padding: {
       bottom: 0,
-      top: 10,
+      top: 15,
     },
   };
 
   return (
     <>
-      <Card className="flex flex-row h-dvh w-full p-4 border-0 rounded-lg">
-        <Card className="w-full h-full p-0 rounded-lg overflow-hidden">
+      <div className="flex flex-col w-full h-[calc(100vh-160px)]">
+        <Card className="w-full h-full py-2">
           <Editor
             theme={theme}
-            defaultLanguage={"javascript"}
             language={language}
             options={options}
             value={value}
             onChange={(newValue: string | undefined) => {
               if (newValue !== undefined) {
                 setValue(newValue);
-                console.log(newValue);
               }
             }}
             onMount={(editor, monaco) => {
               editorRef.current = editor;
-
-              // setting custom theme future ref
-              monaco.editor.defineTheme("buggle-theme", {
-                base: "vs-dark",
-                inherit: true,
-                colors: {
-                  "editor.background": "#0A0A0AFF",
-                  "editor.lineHighlightBackground": "#252525FF",
-                },
-                rules: [],
-              });
+              monaco.editor.defineTheme("buggle-theme", BUGGLE_THEME);
               monaco.editor.setTheme("buggle-theme");
               editor.focus();
             }}
           />
-        </Card>
-        <div className="flex w-full h-full flex-col">
           <Output
             editorRef={editorRef}
             language={language}
-            challengeId={"sum-array"}
+            challengeId={challenge.id}
           />
-        </div>
-      </Card>
+        </Card>
+      </div>
     </>
   );
 };

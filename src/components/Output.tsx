@@ -1,28 +1,25 @@
-// src/components/Output.tsx
-
-import { Card } from "@/components/ui/card";
 import { editor } from "monaco-editor";
 import IEditor = editor.IEditor;
 import React, { RefObject, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
+import { Loader2, SendHorizonal } from "lucide-react";
+import { ScrollArea } from "./ui/scroll-area";
 
-interface Props {
+type OutputProps = {
   editorRef: RefObject<IEditor | null>;
   language: string;
-  challengeId: string; // Add challengeId prop
-}
+  challengeId: string;
+};
 
-const Output = ({ editorRef, language, challengeId }: Props) => {
-  const [output, setOutput] = useState<string[]>([
-    "Click 'Submit' to see the output here...",
-  ]);
+const Output = ({ editorRef, language, challengeId }: OutputProps) => {
+  const [output, setOutput] = useState<string[]>([""]);
   const [isLoading, setIsLoading] = useState(false);
-  const [testsPassed, setTestsPassed] = useState<boolean | null>(null); // Track test results
+  const [testsPassed, setTestsPassed] = useState<boolean | null>(null);
 
   const runCode = async () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
+
     const sourceCode = editorRef.current.getValue();
     if (!sourceCode) return;
     try {
@@ -58,34 +55,39 @@ const Output = ({ editorRef, language, challengeId }: Props) => {
 
   return (
     <>
-      <Card className="h-full w-full p-4 rounded-lg">
-        {isLoading ? (
-          <div className="flex items-center justify-center h-full">
-            <Loader2 className="animate-spin h-6 w-6 mr-2" /> Loading...
-          </div>
-        ) : (
-          <div className="text-gray-600">
-            {output.map((line, i) => (
-              <div key={i}>{line}</div>
-            ))}
-            {testsPassed !== null && (
-              <div
-                className={`mt-2 ${testsPassed ? "text-green-500" : "text-red-500"}`}
-              >
-                {testsPassed ? "Tests Passed!" : "Tests Failed!"}
-              </div>
-            )}
-          </div>
-        )}
-      </Card>
-      <Button
-        className="cursor-pointer h-[50px] text-[1.1rem] mt-4"
-        variant="outline"
-        onClick={runCode}
-        disabled={isLoading}
-      >
-        {isLoading ? "Loading..." : "Submit"}
-      </Button>
+      <div className="flex flex-col w-full h-[250px] border-t-2 border-b-2">
+        <ScrollArea className="h-[250px] w-full py-4 px-6 font-mono-default text-[1rem]">
+          {isLoading ? (
+            <div className="flex items-center justify-center h-full">
+              <Loader2 className="animate-spin h-6 w-6 mr-2" /> loading...
+            </div>
+          ) : (
+            <div className="text-muted-foreground">
+              {output.map((line, i) => (
+                <div key={i}>{`> buggle@user ~> ${line}`}</div>
+              ))}
+              {testsPassed !== null && (
+                <div
+                  className={`${testsPassed ? "text-green-500" : "text-destructive-foreground"}`}
+                >
+                  {testsPassed ? "tests passed!" : "tests failed!"}
+                </div>
+              )}
+            </div>
+          )}
+        </ScrollArea>
+      </div>
+      <div className="flex w-full h-auto items-center justify-center mb-4">
+        <Button
+          className="cursor-pointer w-fit border-2 text-[1rem] font-mono-default p-6"
+          variant="outline"
+          onClick={runCode}
+          disabled={isLoading}
+        >
+          <SendHorizonal className="w-4 h-4" />
+          {isLoading ? "loading..." : "submit"}
+        </Button>
+      </div>
     </>
   );
 };

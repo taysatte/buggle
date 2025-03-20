@@ -1,4 +1,8 @@
-export const execute = async (language: string, sourceCode: string) => {
+import { LANGUAGE_VERSIONS } from "@/constants";
+
+type Language = keyof typeof LANGUAGE_VERSIONS;
+
+export const execute = async (language: Language, sourceCode: string) => {
   try {
     const response = await fetch("https://emkc.org/api/v2/piston/execute", {
       method: "POST",
@@ -7,7 +11,7 @@ export const execute = async (language: string, sourceCode: string) => {
       },
       body: JSON.stringify({
         language: language,
-        version: "18.15.0",
+        version: LANGUAGE_VERSIONS[language],
         files: [
           {
             content: sourceCode,
