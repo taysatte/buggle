@@ -11,14 +11,14 @@ const Navbar = () => {
             <div className="flex gap-4 w-[104px] items-center">
               <BugIcon
                 size={24}
-                className="text-primary hover:text-primary/75 hover:rotate-6 ease-in-out transition-colors duration-200"
+                className="text-primary hover:text-primary/75 ease-in-out transition-colors duration-200"
               />
             </div>
           </Link>
         </div>
         {/** TODO: add countdown component */}
-        <span className="items-center justify-center text-primary/50 font-medium text-xl font-mono-default">
-          {"00:00:00"}
+        <span className="items-center justify-center text-primary/50 font-normal text-xl font-mono-default">
+          {"{ 00:00:00 }"}
         </span>
         <div className="flex items-center justify-end gap-4">
           <Button

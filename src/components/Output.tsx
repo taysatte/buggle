@@ -55,7 +55,7 @@ const Output = ({ editorRef, language, challengeId }: OutputProps) => {
 
   return (
     <>
-      <div className="flex flex-col w-full h-[250px] border-t-2">
+      <div className="flex flex-col w-full h-[250px] border-t-2 border-b-2">
         <ScrollArea className="h-[250px] w-full py-4 px-6 font-mono-default text-[1rem]">
           {isLoading ? (
             <div className="flex items-center justify-center h-full">
@@ -77,9 +77,9 @@ const Output = ({ editorRef, language, challengeId }: OutputProps) => {
           )}
         </ScrollArea>
       </div>
-      <div className="flex w-full items-center justify-center">
+      <div className="flex w-full h-auto items-center justify-center mb-4">
         <Button
-          className="cursor-pointer w-fit border-2 text-[1.1rem] font-mono-default mb-6 p-6"
+          className="cursor-pointer w-fit border-2 text-[1rem] font-mono-default p-6"
           variant="outline"
           onClick={runCode}
           disabled={isLoading}

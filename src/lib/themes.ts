@@ -11,7 +11,7 @@ export const BUGGLE_THEME: editor.IStandaloneThemeData = {
     "editor.background": "#0a0a0a",
     "editor.foreground": "#ffffff",
     "editorCursor.foreground": "#ffcc00",
-    "editor.lineHighlightBackground": "#333333",
+    "editor.lineHighlightBackground": "#171717",
     "editor.selectionBackground": "#264f78",
     "editor.inactiveSelectionBackground": "#264f78aa",
     "editor.selectionHighlightBackground": "#264f78aa",
