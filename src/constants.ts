@@ -15,7 +15,7 @@ export const TEST_CHALLENGES: Challenge[] = [
     title: "Sum Array",
     description:
       "Calculate the sum of all numbers in an array. Fix the bug in the loop condition.",
-    initialCode:
+    code:
       "function sumArray(numbers) {\n" +
       "  let total = 0;\n" +
       "  for (let i = 1; i <= numbers.length; i++) { // Bug is here!\n" +

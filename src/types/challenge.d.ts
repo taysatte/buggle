@@ -7,7 +7,7 @@ export interface Challenge {
   id: string;
   title: string;
   description: string;
-  initialCode: string;
+  code: string;
   testCases: TestCase[];
   language: string;
 }

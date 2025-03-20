@@ -1,17 +1,17 @@
-import { Card } from "@/components/ui/card";
 import { editor } from "monaco-editor";
 import IEditor = editor.IEditor;
 import React, { RefObject, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
+import { ScrollArea } from "./ui/scroll-area";
 
-interface Props {
+type OutputProps = {
   editorRef: RefObject<IEditor | null>;
   language: string;
   challengeId: string;
-}
+};
 
-const Output = ({ editorRef, language, challengeId }: Props) => {
+const Output = ({ editorRef, language, challengeId }: OutputProps) => {
   const [output, setOutput] = useState<string[]>([
     'click "submit" to see the output here...',
   ]);
@@ -21,6 +21,7 @@ const Output = ({ editorRef, language, challengeId }: Props) => {
   const runCode = async () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-expect-error
+
     const sourceCode = editorRef.current.getValue();
     if (!sourceCode) return;
     try {
@@ -56,8 +57,8 @@ const Output = ({ editorRef, language, challengeId }: Props) => {
 
   return (
     <>
-      <div className="flex flex-col w-full h-full gap-6">
-        <Card className="h-[250px] w-full p-4 rounded-xl border-2 font-mono-default text-[1rem]">
+      <div className="flex flex-col w-full h-full border-t-2">
+        <ScrollArea className="h-[250px] w-full py-4 px-6 font-mono-default text-[1.1rem]">
           {isLoading ? (
             <div className="flex items-center justify-center h-full">
               <Loader2 className="animate-spin h-6 w-6 mr-2" /> loading...
@@ -76,16 +77,16 @@ const Output = ({ editorRef, language, challengeId }: Props) => {
               )}
             </div>
           )}
-        </Card>
-        <Button
-          className="cursor-pointer h-[50px] border-2 text-[1.1rem]"
-          variant="outline"
-          onClick={runCode}
-          disabled={isLoading}
-        >
-          {isLoading ? "loading..." : "submit"}
-        </Button>
+        </ScrollArea>
       </div>
+      <Button
+        className="cursor-pointer w-fit h-[50px] border-2 text-[1.1rem]"
+        variant="outline"
+        onClick={runCode}
+        disabled={isLoading}
+      >
+        {isLoading ? "loading..." : "submit"}
+      </Button>
     </>
   );
 };
