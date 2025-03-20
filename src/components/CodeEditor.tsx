@@ -34,9 +34,8 @@ const CodeEditor = ({ challenge, theme, language }: CodeEditorProps) => {
 
   return (
     <>
-      <div className="flex flex-col w-full h-full gap-6">
+      <div className="flex flex-col w-full h-[calc(100vh-128px)] gap-6">
         <Editor
-          height={"60vh"}
           theme={theme}
           language={language}
           options={options}

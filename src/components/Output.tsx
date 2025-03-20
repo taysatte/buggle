@@ -12,9 +12,7 @@ type OutputProps = {
 };
 
 const Output = ({ editorRef, language, challengeId }: OutputProps) => {
-  const [output, setOutput] = useState<string[]>([
-    'click "submit" to see the output here...',
-  ]);
+  const [output, setOutput] = useState<string[]>([""]);
   const [isLoading, setIsLoading] = useState(false);
   const [testsPassed, setTestsPassed] = useState<boolean | null>(null);
 
@@ -57,8 +55,8 @@ const Output = ({ editorRef, language, challengeId }: OutputProps) => {
 
   return (
     <>
-      <div className="flex flex-col w-full h-full border-t-2">
-        <ScrollArea className="h-[250px] w-full py-4 px-6 font-mono-default text-[1.1rem]">
+      <div className="flex flex-col w-full h-[250px] border-t-2">
+        <ScrollArea className="h-[250px] w-full py-4 px-6 font-mono-default text-[1rem]">
           {isLoading ? (
             <div className="flex items-center justify-center h-full">
               <Loader2 className="animate-spin h-6 w-6 mr-2" /> loading...
@@ -66,7 +64,7 @@ const Output = ({ editorRef, language, challengeId }: OutputProps) => {
           ) : (
             <div className="text-muted-foreground">
               {output.map((line, i) => (
-                <div key={i}>{line}</div>
+                <div key={i}>{`> buggle@user ~> ${line}`}</div>
               ))}
               {testsPassed !== null && (
                 <div
@@ -79,14 +77,16 @@ const Output = ({ editorRef, language, challengeId }: OutputProps) => {
           )}
         </ScrollArea>
       </div>
-      <Button
-        className="cursor-pointer w-fit h-[50px] border-2 text-[1.1rem]"
-        variant="outline"
-        onClick={runCode}
-        disabled={isLoading}
-      >
-        {isLoading ? "loading..." : "submit"}
-      </Button>
+      <div className="flex w-full items-center justify-center">
+        <Button
+          className="cursor-pointer w-fit border-2 text-[1.1rem] font-mono-default mb-6 p-6"
+          variant="outline"
+          onClick={runCode}
+          disabled={isLoading}
+        >
+          {isLoading ? "loading..." : "submit"}
+        </Button>
+      </div>
     </>
   );
 };
