@@ -2,7 +2,7 @@ import { editor } from "monaco-editor";
 import IEditor = editor.IEditor;
 import React, { RefObject, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
+import { Loader2, SendHorizonal } from "lucide-react";
 import { ScrollArea } from "./ui/scroll-area";
 
 type OutputProps = {
@@ -84,6 +84,7 @@ const Output = ({ editorRef, language, challengeId }: OutputProps) => {
           onClick={runCode}
           disabled={isLoading}
         >
+          <SendHorizonal className="w-4 h-4" />
           {isLoading ? "loading..." : "submit"}
         </Button>
       </div>

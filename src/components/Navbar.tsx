@@ -1,4 +1,4 @@
-import { BugIcon, Settings2, Sun, SunMoon } from "lucide-react";
+import { BugIcon, Settings2, SunMoon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
