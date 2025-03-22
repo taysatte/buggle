@@ -8,7 +8,7 @@ const Navbar = () => {
     <>
       <nav className="h-[64px] px-6 w-full flex items-center justify-between text-foreground">
         <div className="flex items-center justify-start text-2xl font-bold font-mono-default">
-          <div className="flex gap-4 w-[152px] items-center">
+          <div className="flex gap-4 w-[156px] items-center">
             <Link href={"/"}>
               <BugIcon
                 size={24}
@@ -36,8 +36,8 @@ const Navbar = () => {
           >
             <Settings2 size={24} className="text-primary" />
           </Button>
-          <Avatar className="cursor-pointer">
-            <AvatarImage src="" />
+          <Avatar className="ml-1 cursor-pointer">
+            <AvatarImage src="https://avatar.iran.liara.run/public" />
             <AvatarFallback className="font-mono-default font-medium">
               BG
             </AvatarFallback>
