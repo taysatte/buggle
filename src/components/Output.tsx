@@ -8,6 +8,13 @@ interface OutputProps {
   testsPassed: boolean | null;
 }
 
+{
+  /**
+   * FIXME:
+   *  - output window needs to scroll down to last printed line on code run
+   *  - testing logic needs to be moved outside of output window
+   * */
+}
 const Output = ({ output, isLoading, testsPassed }: OutputProps) => {
   return (
     <ScrollArea className="h-full w-full py-4 px-6 font-mono-default text-[1rem]">

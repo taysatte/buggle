@@ -8,7 +8,7 @@ const Navbar = () => {
     <>
       <nav className="h-[64px] px-6 w-full flex items-center justify-between text-foreground">
         <div className="flex items-center justify-start text-2xl font-bold font-mono-default">
-          <div className="flex gap-4 w-[156px] items-center">
+          <div className="flex gap-4 w-[152px] items-center">
             <Link href={"/"}>
               <BugIcon
                 size={24}
@@ -19,7 +19,7 @@ const Navbar = () => {
         </div>
         {/** TODO: add countdown component */}
         <span className="items-center justify-center text-primary/50 font-normal text-xl font-mono-default">
-          {"{ 00:00:00 }"}
+          {"[ 00:00:00 ]"}
         </span>
         <div className="flex items-center justify-end gap-4">
           <Button
@@ -36,8 +36,8 @@ const Navbar = () => {
           >
             <Settings2 size={24} className="text-primary" />
           </Button>
-          <Avatar className="ml-1 cursor-pointer">
-            <AvatarImage src="https://avatar.iran.liara.run/public" />
+          <Avatar className="cursor-pointer">
+            <AvatarImage src="https://robohash.org/bug-robot.png?set=set3"></AvatarImage>
             <AvatarFallback className="font-mono-default font-medium">
               BG
             </AvatarFallback>
