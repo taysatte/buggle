@@ -18,7 +18,7 @@ const Navbar = () => {
           </div>
         </div>
         {/** TODO: add countdown component */}
-        <span className="items-center justify-center text-primary/50 font-normal text-xl font-mono-default">
+        <span className="items-center justify-center text-primary font-normal text-xl font-mono-default">
           {"[ 00:00:00 ]"}
         </span>
         <div className="flex items-center justify-end gap-4">

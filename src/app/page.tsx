@@ -48,7 +48,7 @@ export default function App() {
     <>
       <div className="flex flex-col w-full h-full gap-4 px-4">
         <div className="w-full h-[64px]">
-          <Card className="w-full h-full bg-secondary/50 flex items-center justify-center p-4">
+          <Card className="w-full h-full bg-card flex items-center justify-center p-4">
             <EditorControls
               sourceCode={sourceCode}
               language={language}
@@ -80,7 +80,7 @@ export default function App() {
           </div>
           {/* TODO: content section somponent */}
           <div className="w-5/12 h-[calc(100vh-160px)]">
-            <Card className="w-full h-full flex justify-center items-center text-primary/50 bg-secondary/50">
+            <Card className="w-full h-full flex justify-center items-center text-primary bg-card">
               {`{ Content Section }`}
             </Card>
           </div>
