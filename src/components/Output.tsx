@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useRef, useEffect } from "react";
 import { ScrollArea } from "./ui/scroll-area";
 import { Loader2 } from "lucide-react";
 
@@ -8,25 +10,31 @@ interface OutputProps {
   testsPassed: boolean | null;
 }
 
-{
-  /**
-   * FIXME:
-   *  - output window needs to scroll down to last printed line on code run
-   *  - testing logic needs to be moved outside of output window
-   * */
-}
 const Output = ({ output, isLoading, testsPassed }: OutputProps) => {
+  const scrollAreaRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollAreaRef.current) {
+      scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
+    }
+  }, [output]);
+
   return (
-    <ScrollArea className="h-full w-full py-4 px-6 font-mono-default text-[1rem]">
+    <ScrollArea
+      className="h-full w-full py-4 px-6 font-mono-default text-[1rem]"
+      ref={scrollAreaRef}
+    >
       {isLoading ? (
         <div className="flex items-center justify-center h-full">
           <Loader2 className="animate-spin h-6 w-6 mr-2" /> loading...
         </div>
       ) : (
         <div className="text-muted-foreground">
-          {output.map((line, i) => (
-            <div key={i}>{`> buggle@user ~> ${line}`}</div>
-          ))}
+          {output
+            .filter((line) => line.trim() !== "")
+            .map((line, i) => (
+              <div key={i}>{`> buggle@user ~> ${line}`}</div>
+            ))}
           {testsPassed !== null && (
             <div
               className={`${

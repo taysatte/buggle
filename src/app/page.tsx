@@ -24,7 +24,7 @@ export default function App() {
     try {
       setIsSubmitLoading(true);
       setTestsPassed(null);
-      const response = await fetch("/api/execute", {
+      const response = await fetch("/api/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -51,21 +51,30 @@ export default function App() {
     try {
       setIsOutputLoading(true);
       setIsRunCodeLoading(true);
-      setTestsPassed(null);
+      setOutput([]); // Reset output before new execution
       const response = await fetch("/api/execute", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           language,
           sourceCode,
-          challengeId: challenge.id,
         }),
       });
       if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
-      setOutput(data.pistonResult.run.output.split("\n"));
-      setTestsPassed(data.testsPassed);
+      if (data.vmOutput) {
+        setOutput(data.vmOutput.toString().split("\n")); // Use vmOutput
+      } else if (
+        data &&
+        data.pistonResult &&
+        data.pistonResult.run &&
+        data.pistonResult.run.output
+      ) {
+        setOutput(data.pistonResult.run.output.split("\n")); // Use pistonResult
+      } else {
+        setOutput(["No Output Returned"]);
+      }
     } catch (error) {
       console.error(error);
       setOutput(["An error occurred during execution."]);
