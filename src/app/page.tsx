@@ -14,13 +14,43 @@ export default function App() {
 
   const [sourceCode, setSourceCode] = useState("");
   const [output, setOutput] = useState<string[]>([""]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isRunCodeLoading, setIsRunCodeLoading] = useState(false);
+  const [isSubmitLoading, setIsSubmitLoading] = useState(false);
+  const [isOutputLoading, setIsOutputLoading] = useState(false);
   const [testsPassed, setTestsPassed] = useState<boolean | null>(null);
 
-  const runCode = async () => {
+  const handleSubmitCode = async () => {
     if (!sourceCode) return;
     try {
-      setIsLoading(true);
+      setIsSubmitLoading(true);
+      setTestsPassed(null);
+      const response = await fetch("/api/execute", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          language,
+          sourceCode,
+          challengeId: challenge.id,
+        }),
+      });
+      if (!response.ok)
+        throw new Error(`HTTP error! status: ${response.status}`);
+      const data = await response.json();
+      setOutput(data.pistonResult.run.output.split("\n"));
+      setTestsPassed(data.testsPassed);
+    } catch (error) {
+      console.error(error);
+      setOutput(["An error occurred during submission."]);
+    } finally {
+      setIsSubmitLoading(false);
+    }
+  };
+
+  const handleRunCode = async () => {
+    if (!sourceCode) return;
+    try {
+      setIsOutputLoading(true);
+      setIsRunCodeLoading(true);
       setTestsPassed(null);
       const response = await fetch("/api/execute", {
         method: "POST",
@@ -40,7 +70,8 @@ export default function App() {
       console.error(error);
       setOutput(["An error occurred during execution."]);
     } finally {
-      setIsLoading(false);
+      setIsOutputLoading(false);
+      setIsRunCodeLoading(false);
     }
   };
 
@@ -53,8 +84,10 @@ export default function App() {
               sourceCode={sourceCode}
               language={language}
               challengeId={challenge.id}
-              runCode={runCode}
-              isLoading={isLoading}
+              submitCode={handleSubmitCode}
+              runCode={handleRunCode}
+              isSubmitLoading={isSubmitLoading}
+              isRunCodeLoading={isRunCodeLoading}
             />
           </Card>
         </div>
@@ -72,7 +105,7 @@ export default function App() {
               <div className="w-full h-1/4 border-t-2">
                 <Output
                   output={output}
-                  isLoading={isLoading}
+                  isLoading={isOutputLoading}
                   testsPassed={testsPassed}
                 />
               </div>
