@@ -36,11 +36,18 @@ export default function App() {
       if (!response.ok)
         throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
-      setOutput(data.pistonResult.run.output.split("\n"));
+
+      // TODO: testing needs to be implemented
+      if (data.testsPassed !== false) {
+        alert("tests passed!");
+      } else {
+        alert("tests failed.");
+      }
+
       setTestsPassed(data.testsPassed);
     } catch (error) {
       console.error(error);
-      setOutput(["An error occurred during submission."]);
+      setOutput(["an error occurred during submission."]);
     } finally {
       setIsSubmitLoading(false);
     }
@@ -51,7 +58,6 @@ export default function App() {
     try {
       setIsOutputLoading(true);
       setIsRunCodeLoading(true);
-      setOutput([]); // Reset output before new execution
       const response = await fetch("/api/execute", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -64,20 +70,29 @@ export default function App() {
         throw new Error(`HTTP error! status: ${response.status}`);
       const data = await response.json();
       if (data.vmOutput) {
-        setOutput(data.vmOutput.toString().split("\n")); // Use vmOutput
+        setOutput(
+          data.vmOutput
+            .toString()
+            .split("\n")
+            .filter((line: string) => line.trim() !== ""),
+        ); // Use vmOutput
       } else if (
         data &&
         data.pistonResult &&
         data.pistonResult.run &&
         data.pistonResult.run.output
       ) {
-        setOutput(data.pistonResult.run.output.split("\n")); // Use pistonResult
+        setOutput(
+          data.pistonResult.run.output
+            .split("\n")
+            .filter((line: string) => line.trim() !== ""),
+        );
       } else {
-        setOutput(["No Output Returned"]);
+        setOutput([""]);
       }
     } catch (error) {
       console.error(error);
-      setOutput(["An error occurred during execution."]);
+      setOutput(["an error occurred during execution..."]);
     } finally {
       setIsOutputLoading(false);
       setIsRunCodeLoading(false);

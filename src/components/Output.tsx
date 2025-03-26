@@ -1,4 +1,4 @@
-"use client";
+// Output.tsx
 
 import React, { useRef, useEffect } from "react";
 import { ScrollArea } from "./ui/scroll-area";
@@ -30,11 +30,9 @@ const Output = ({ output, isLoading, testsPassed }: OutputProps) => {
         </div>
       ) : (
         <div className="text-muted-foreground">
-          {output
-            .filter((line) => line.trim() !== "")
-            .map((line, i) => (
-              <div key={i}>{`> buggle@user ~> ${line}`}</div>
-            ))}
+          {output.map((line, i) => (
+            <div key={i}>{`> buggle@user ~> ${line}`}</div>
+          ))}
           {testsPassed !== null && (
             <div
               className={`${
