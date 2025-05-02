@@ -37,7 +37,7 @@ const Navbar = () => {
             <Settings2 size={24} className="text-primary" />
           </Button>
           <Avatar className="ml-1 cursor-pointer">
-            <AvatarImage src="https://robohash.org/bug-robot.png?set=set3"></AvatarImage>
+            <AvatarImage src="https://robohash.org/bug-robot.png?set=set2"></AvatarImage>
             <AvatarFallback className="font-mono-default font-medium">
               BG
             </AvatarFallback>
