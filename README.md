@@ -1,11 +1,11 @@
 
 <center>
-  ![Buggle Logo](public/buggle-bug-logo.png)
+  <image src="https://i.ibb.co/BVsLL65D/readme-banner.png" alt="Buggle Logo" />
 </center>
 
 ---
 
-### 🚀 Buggle - The Daily Coding Challenge
+### 🪲 Buggle - The Daily Coding Challenge
 
 Buggle is a web application designed to challenge programmers with a new debugging puzzle every day. Inspired by popular daily word games, Buggle presents users with a snippet of code containing a subtle bug. Your task is to identify and fix the anomaly to achieve the correct output within a limited number of attempts.
 
