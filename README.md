@@ -1,6 +1,6 @@
 
 <center>
-  <image src="https://i.imgur.com/hIwyMVD.png" alt="Buggle Logo" />
+  <image src="https://i.imgur.com/YqE7NAa.png" alt="Buggle Logo" />
 </center>
 
 ---
