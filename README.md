@@ -16,11 +16,12 @@ Sharpen your debugging skills, climb the leaderboards, and share your results wi
 ### 📋 Todo
 
 - [ ] Basic UI/UX
+- [ ] Code Editor Integration
+- [ ] Database schema
 - [ ] Connect to Backend
 - [ ] Daily Challenge Generation
 - [ ] User Profiles
-- [ ] User Authentication
+- [ ] User Auth
 - [ ] Leaderboards
 - [ ] Social Sharing
 - [ ] Hints System
-- [ ] Admin Panel for Challenge Management

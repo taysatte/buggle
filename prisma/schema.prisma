@@ -40,7 +40,14 @@ model Puzzle {
   id          Int      @id @default(autoincrement())
   title       String
   description String
-  // ... other puzzle data
-
+  testCases   TestCase[]
   submissions Submission[]
+}
+
+model TestCase {
+  id             Int    @id @default(autoincrement())
+  input          String
+  expectedOutput String
+  puzzleId       Int
+  puzzle         Puzzle @relation(fields: [puzzleId], references: [id])
 }
