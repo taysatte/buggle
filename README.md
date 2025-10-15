@@ -18,7 +18,7 @@ Sharpen your debugging skills, climb the leaderboards, and share your results wi
 - [ ] Basic UI/UX
 - [ ] Code Editor Integration
 - [ ] Database schema
-- [ ] Connect to Backend
+- [x] Connect to Backend
 - [ ] Daily Challenge Generation
 - [ ] User Profiles
 - [ ] User Auth
