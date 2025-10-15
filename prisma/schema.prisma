@@ -10,9 +10,37 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  email String @unique
-  name String?
+  id                String   @id @default(uuid())
+  email             String?  @unique
+  name              String?
+  avatar_url        String?
+  currentStreak     Int      @default(0)
+  longestStreak     Int      @default(0)
+  experiencePoints  Int      @default(0)
+  preferredLanguage String?
+  theme             String?  @default("dark")
+  submissions       Submission[]
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Submission {
+  id        Int      @id @default(autoincrement())
+  attempts  Int
+  timeTaken Int
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  puzzleId  Int
+  puzzle    Puzzle   @relation(fields: [puzzleId], references: [id])
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  @@unique([userId, puzzleId])
+}
+
+model Puzzle {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  // ... other puzzle data
+
+  submissions Submission[]
 }
