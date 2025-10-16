@@ -1,17 +1,11 @@
-"use client";
-
-import { Button } from "@/components/ui/button";
-
-export default function Home() {
-  const handleButtonClick = () => {
-    console.log("Button clicked!");
-  };
-
+const PuzzlePage = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center p-24 bg-background">
-      <Button className="cursor-pointer" onClick={handleButtonClick}>
-        Testing
-      </Button>
-    </div>
+    <>
+      <div className="flex min-h-screen items-center justify-center p-24 bg-background">
+        Hello World
+      </div>
+    </>
   );
-}
+};
+
+export default PuzzlePage;
