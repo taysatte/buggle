@@ -1,14 +1,38 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { TimerIcon, SunMediumIcon, Settings2Icon } from "lucide-react";
+import {
+  TimerIcon,
+  SunMediumIcon,
+  MoonIcon,
+  Settings2Icon,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Item, ItemContent, ItemMedia } from "@/components/ui/item";
 import { Separator } from "@/components/ui/separator";
+import { useTheme } from "next-themes";
 
 const PuzzlePage = () => {
+  const { theme, setTheme, systemTheme } = useTheme();
+
+  // prevent hydration mismatch — only read theme on the client after mount
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
+  const activeTheme = theme === "system" ? systemTheme : theme;
+
+  const handleModeSwitch = () => {
+    if (activeTheme === "dark") {
+      setTheme("light");
+    } else {
+      setTheme("dark");
+    }
+  };
+
   return (
     <>
-      {/* TODO: Navigation bar component with logo, daily timer, and links */}
       <nav className="px-4 flex flex-row items-center h-[64px] w-full">
         <div className="flex-1 flex justify-start h-full">
           <Image
@@ -35,13 +59,36 @@ const PuzzlePage = () => {
           </Item>
         </div>
         <div className="flex-1 flex gap-4 justify-end items-center h-6">
-          {/* TODO: Dark/light mode logic */}
           <Button
             className="cursor-pointer rounded-xl"
             size="icon"
             variant="outline"
+            onClick={() => handleModeSwitch()}
+            aria-label="Toggle theme"
           >
-            <SunMediumIcon className="text-primary" size={30} />
+            {/* Render both icons stacked and crossfade by toggling opacity */}
+            {!mounted ? (
+              <span className="w-6 h-6" />
+            ) : (
+              <span className="relative w-8 h-8 inline-block">
+                <SunMediumIcon
+                  className={`absolute inset-0 m-auto transition-all duration-300 transform ${
+                    activeTheme === "dark"
+                      ? "opacity-100 rotate-0 scale-100 text-primary"
+                      : "opacity-0 -rotate-12 scale-75 text-primary"
+                  }`}
+                  size={30}
+                />
+                <MoonIcon
+                  className={`absolute inset-0 m-auto transition-all duration-300 transform ${
+                    activeTheme === "dark"
+                      ? "opacity-0 rotate-12 scale-75 text-primary"
+                      : "opacity-100 rotate-0 scale-100 text-primary"
+                  }`}
+                  size={30}
+                />
+              </span>
+            )}
           </Button>
           {/* TODO: Implement settings */}
           <Button
