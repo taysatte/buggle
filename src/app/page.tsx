@@ -12,8 +12,8 @@ const PuzzlePage = () => {
           <Image
             src="/svgs/buggle-bug-logo.svg"
             alt="Buggle Bug Logo"
-            width={34}
-            height={34}
+            width={38}
+            height={38}
           />
         </div>
         {/* TODO: Countdown component */}
