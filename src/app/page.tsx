@@ -1,7 +1,9 @@
 import Image from "next/image";
-import { SunMediumIcon, Settings2Icon } from "lucide-react";
+import { TimerIcon, SunMediumIcon, Settings2Icon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Item, ItemContent, ItemMedia } from "@/components/ui/item";
+import { Separator } from "@/components/ui/separator";
 
 const PuzzlePage = () => {
   return (
@@ -18,16 +20,28 @@ const PuzzlePage = () => {
         </div>
         {/* TODO: Countdown component */}
         <div className="flex-1 flex items-center justify-center h-full">
-          <h1 className="text-xl font-bold font-mono">23:43:02</h1>
+          <Item
+            variant="outline"
+            className="px-4 py-1 rounded-xl bg-input/30 drop-shadow-2xl backdrop-blur-md"
+          >
+            <ItemMedia>
+              <TimerIcon className="text-primary" size={20} />
+            </ItemMedia>
+            <ItemContent>
+              <h1 className="text-lg text-foreground font-bold font-mono">
+                23:43:02
+              </h1>
+            </ItemContent>
+          </Item>
         </div>
-        <div className="flex-1 flex gap-3 justify-end items-center h-full">
+        <div className="flex-1 flex gap-4 justify-end items-center h-6">
           {/* TODO: Dark/light mode logic */}
           <Button
             className="cursor-pointer rounded-xl"
             size="icon"
             variant="outline"
           >
-            <SunMediumIcon className="text-foreground" size={30} />
+            <SunMediumIcon className="text-primary" size={30} />
           </Button>
           {/* TODO: Implement settings */}
           <Button
@@ -35,10 +49,11 @@ const PuzzlePage = () => {
             size="icon"
             variant="outline"
           >
-            <Settings2Icon size={30} />
+            <Settings2Icon className="text-primary" size={30} />
           </Button>
+          <Separator orientation="vertical" decorative />
           {/* TODO: User profile dropdown */}
-          <Avatar className="ml-2">
+          <Avatar>
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>BG</AvatarFallback>
           </Avatar>
