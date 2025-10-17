@@ -16,12 +16,10 @@ import { useTheme } from "next-themes";
 
 const PuzzlePage = () => {
   const { theme, setTheme, systemTheme } = useTheme();
-
-  // prevent hydration mismatch — only read theme on the client after mount
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
   const activeTheme = theme === "system" ? systemTheme : theme;
+
+  useEffect(() => setMounted(true), []);
 
   const handleModeSwitch = () => {
     if (activeTheme === "dark") {
