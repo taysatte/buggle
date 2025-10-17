@@ -7,7 +7,7 @@ const PuzzlePage = () => {
   return (
     <>
       {/* TODO: Navigation bar component with logo, daily timer, and links */}
-      <nav className="px-6 flex flex-row items-center h-[55px] w-full">
+      <nav className="px-4 flex flex-row items-center h-[64px] w-full">
         <div className="flex-1 flex justify-start h-full">
           <Image
             src="/svgs/buggle-bug-logo.svg"
@@ -18,9 +18,9 @@ const PuzzlePage = () => {
         </div>
         {/* TODO: Countdown component */}
         <div className="flex-1 flex items-center justify-center h-full">
-          <h1 className="text-2xl font-bold">00:00:00</h1>
+          <h1 className="text-xl font-bold font-mono">23:43:02</h1>
         </div>
-        <div className="flex-1 flex gap-3 justify-end items-center">
+        <div className="flex-1 flex gap-3 justify-end items-center h-full">
           {/* TODO: Dark/light mode logic */}
           <Button
             className="cursor-pointer rounded-xl"
@@ -29,6 +29,7 @@ const PuzzlePage = () => {
           >
             <SunMediumIcon className="text-foreground" size={30} />
           </Button>
+          {/* TODO: Implement settings */}
           <Button
             className="cursor-pointer rounded-xl"
             size="icon"
@@ -36,6 +37,7 @@ const PuzzlePage = () => {
           >
             <Settings2Icon size={30} />
           </Button>
+          {/* TODO: User profile dropdown */}
           <Avatar className="ml-2">
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>BG</AvatarFallback>
