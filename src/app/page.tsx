@@ -101,7 +101,7 @@ const PuzzlePage = () => {
           <Separator orientation="vertical" decorative />
           {/* TODO: User profile dropdown */}
           <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarImage src="https://avatar.iran.liara.run/public" />
             <AvatarFallback>BG</AvatarFallback>
           </Avatar>
         </div>
