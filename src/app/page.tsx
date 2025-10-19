@@ -2,12 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import {
-  TimerIcon,
-  SunMediumIcon,
-  MoonIcon,
-  Settings2Icon,
-} from "lucide-react";
+import { TimerIcon, SunMediumIcon, MoonIcon, SettingsIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Item, ItemContent, ItemMedia } from "@/components/ui/item";
@@ -22,11 +17,11 @@ const PuzzlePage = () => {
   useEffect(() => setMounted(true), []);
 
   const handleModeSwitch = () => {
-    if (activeTheme === "dark") {
-      setTheme("light");
-    } else {
-      setTheme("dark");
-    }
+    // compute current reliably even before mounted
+    const current =
+      activeTheme ?? (theme === "system" ? systemTheme : theme) ?? "light";
+    const next = current === "dark" ? "light" : "dark";
+    setTheme(next);
   };
 
   return (
@@ -40,14 +35,12 @@ const PuzzlePage = () => {
             height={38}
           />
         </div>
+
         {/* TODO: Countdown component */}
         <div className="flex-1 flex items-center justify-center h-full">
-          <Item
-            variant="outline"
-            className="px-4 py-1 rounded-xl bg-input/30 drop-shadow-2xl backdrop-blur-md"
-          >
+          <Item variant="outline" className="px-4 py-2 rounded-2xl bg-card">
             <ItemMedia>
-              <TimerIcon className="text-primary" size={20} />
+              <TimerIcon className="text-primary" size={22} />
             </ItemMedia>
             <ItemContent>
               <h1 className="text-lg text-foreground font-bold font-mono">
@@ -56,47 +49,54 @@ const PuzzlePage = () => {
             </ItemContent>
           </Item>
         </div>
-        <div className="flex-1 flex gap-4 justify-end items-center h-6">
-          <Button
-            className="cursor-pointer rounded-xl"
-            size="icon"
-            variant="outline"
-            onClick={() => handleModeSwitch()}
-            aria-label="Toggle theme"
-          >
-            {/* Render both icons stacked and crossfade by toggling opacity */}
-            {!mounted ? (
-              <span className="w-6 h-6" />
-            ) : (
-              <span className="relative w-8 h-8 inline-block">
-                <SunMediumIcon
-                  className={`absolute inset-0 m-auto transition-all duration-300 transform ${
-                    activeTheme === "dark"
-                      ? "opacity-100 rotate-0 scale-100 text-primary"
-                      : "opacity-0 -rotate-12 scale-75 text-primary"
-                  }`}
-                  size={30}
-                />
-                <MoonIcon
-                  className={`absolute inset-0 m-auto transition-all duration-300 transform ${
-                    activeTheme === "dark"
-                      ? "opacity-0 rotate-12 scale-75 text-primary"
-                      : "opacity-100 rotate-0 scale-100 text-primary"
-                  }`}
-                  size={30}
-                />
-              </span>
-            )}
-          </Button>
-          {/* TODO: Implement settings */}
-          <Button
-            className="cursor-pointer rounded-xl"
-            size="icon"
-            variant="outline"
-          >
-            <Settings2Icon className="text-primary" size={30} />
-          </Button>
-          <Separator orientation="vertical" decorative />
+        <div className="flex-1 flex gap-4 justify-end items-center h-full">
+          <div className="flex flex-1 gap-2 justify-end items-center h-full">
+            <Button
+              className="cursor-pointer rounded-xl relative p-0 flex items-center justify-center"
+              size="icon"
+              variant="outline"
+              onClick={handleModeSwitch}
+              aria-label="Toggle theme"
+            >
+              {!mounted ? (
+                <span className="w-6 h-6" />
+              ) : (
+                <>
+                  <SunMediumIcon
+                    className={
+                      activeTheme === "dark"
+                        ? "inline-block text-primary"
+                        : "hidden text-primary"
+                    }
+                    aria-hidden
+                    size={30}
+                  />
+                  <MoonIcon
+                    className={
+                      activeTheme === "dark"
+                        ? "hidden text-primary"
+                        : "inline-block text-primary"
+                    }
+                    aria-hidden
+                    size={30}
+                  />
+                </>
+              )}
+            </Button>
+
+            {/* TODO: Implement settings */}
+            <Button
+              className="cursor-pointer rounded-xl"
+              size="icon"
+              variant="outline"
+            >
+              <SettingsIcon className="text-primary" />
+            </Button>
+          </div>
+          <div className="h-6">
+            <Separator orientation="vertical" decorative />
+          </div>
+
           {/* TODO: User profile dropdown */}
           <Avatar>
             <AvatarImage src="https://avatar.iran.liara.run/public" />
