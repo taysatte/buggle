@@ -24,7 +24,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="px-4 flex flex-row items-center h-[64px] w-full">
+    <nav className="px-4 flex flex-row items-center h-[64px] w-full border-b border-border">
       <div className="flex-1 flex justify-start h-full">
         <Image
           src="/svgs/buggle-bug-logo.svg"

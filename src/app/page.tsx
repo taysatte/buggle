@@ -11,16 +11,18 @@ const PuzzlePage = () => {
       {/* Main content area */}
       <main className="h-[calc(100vh-64px)]">
         {/* TODO: Code Editor component */}
-        <Allotment className="h-full" defaultSizes={[65, 35]}>
-          {/* Code editor pane - should take 3/4 of the width on load */}
-          <div className="h-full flex flex-col items-center justify-center">
-            <span className="text-xl font-bold">Code Editor</span>
-          </div>
-          {/* Puzzle description pane - should take 1/4 of the width on load */}
-          <div className="h-full flex flex-col items-center justify-center">
-            <span className="text-xl font-bold">Puzzle Description</span>
-          </div>
-        </Allotment>
+        <div className="allotment-theme h-full">
+          <Allotment className="h-full" defaultSizes={[60, 40]}>
+            {/* Code editor pane - should take 3/4 of the width on load */}
+            <div className="h-full flex flex-col items-center justify-center">
+              <span className="text-xl font-bold"> {"{ editor } "} </span>
+            </div>
+            {/* Puzzle description pane - should take 1/4 of the width on load */}
+            <div className="h-full flex flex-col items-center justify-center">
+              <span className="text-xl font-bold">{"{ description }"}</span>
+            </div>
+          </Allotment>
+        </div>
       </main>
     </>
   );
