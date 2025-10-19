@@ -17,7 +17,6 @@ const PuzzlePage = () => {
   useEffect(() => setMounted(true), []);
 
   const handleModeSwitch = () => {
-    // compute current reliably even before mounted
     const current =
       activeTheme ?? (theme === "system" ? systemTheme : theme) ?? "light";
     const next = current === "dark" ? "light" : "dark";
@@ -38,7 +37,7 @@ const PuzzlePage = () => {
 
         {/* TODO: Countdown component */}
         <div className="flex-1 flex items-center justify-center h-full">
-          <Item variant="outline" className="px-4 py-2 rounded-2xl bg-card">
+          <Item variant="outline" className="px-4 py-1 rounded-2xl bg-card">
             <ItemMedia>
               <TimerIcon className="text-primary" size={22} />
             </ItemMedia>
