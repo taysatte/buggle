@@ -1,7 +1,9 @@
 "use client";
 
+import CodeEditor from "@/components/editor/CodeEditor";
 import Navbar from "@/components/navbar/Navbar";
 import { Allotment } from "allotment";
+import { Card, CardContent, CardAction } from "@/components/ui/card";
 import "allotment/dist/style.css";
 
 const PuzzlePage = () => {
@@ -10,16 +12,17 @@ const PuzzlePage = () => {
       <Navbar />
       {/* Main content area */}
       <main className="h-[calc(100vh-64px)]">
-        {/* TODO: Code Editor component */}
         <div className="allotment-theme h-full">
-          <Allotment className="h-full" defaultSizes={[60, 40]}>
-            {/* Code editor pane - should take 3/4 of the width on load */}
-            <div className="h-full flex flex-col items-center justify-center">
-              <span className="text-xl font-bold"> {"{ editor } "} </span>
+          <Allotment className="h-full" defaultSizes={[50, 50]}>
+            {/* Code Editor */}
+            <div className="h-full flex flex-col items-center justify-center pr-2 pl-4 pb-4">
+              <Card className="h-full w-full">
+                <CodeEditor />
+              </Card>
             </div>
-            {/* Puzzle description pane - should take 1/4 of the width on load */}
-            <div className="h-full flex flex-col items-center justify-center">
-              <span className="text-xl font-bold">{"{ description }"}</span>
+            {/* Puzzle description component */}
+            <div className="h-full flex flex-col items-center justify-center pr-4 pl-2 pb-4">
+              <Card className="h-full w-full"></Card>
             </div>
           </Allotment>
         </div>

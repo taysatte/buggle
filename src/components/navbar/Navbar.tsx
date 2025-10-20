@@ -24,7 +24,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="px-4 flex flex-row items-center h-[64px] w-full border-b border-border">
+    <nav className="px-4 flex flex-row items-center h-[64px] w-full">
       <div className="flex-1 flex justify-start h-full">
         <Image
           src="/svgs/buggle-bug-logo.svg"
@@ -33,9 +33,8 @@ export default function Navbar() {
           height={38}
         />
       </div>
-
       <div className="flex-1 flex items-center justify-center h-full">
-        <Item variant="outline" className="px-4 py-1 rounded-2xl bg-card">
+        <Item variant="outline" className="px-3 py-1 rounded-2xl bg-card">
           <ItemMedia>
             <TimerIcon className="text-primary" size={22} />
           </ItemMedia>
@@ -46,7 +45,6 @@ export default function Navbar() {
           </ItemContent>
         </Item>
       </div>
-
       <div className="flex-1 flex gap-4 justify-end items-center h-full">
         <div className="flex flex-1 gap-2 justify-end items-center h-full">
           <Button

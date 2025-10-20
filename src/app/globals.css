@@ -115,7 +115,8 @@
 }
 
 .allotment-theme {
-  --separator-border: var(--color-border);
+  /* --separator-border: var(--color-border); */
+  --separator-border: transparent;
   --focus-border: var(--color-border);
 }
 
