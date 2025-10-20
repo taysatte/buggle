@@ -34,9 +34,9 @@ export default function Navbar() {
         />
       </div>
       <div className="flex-1 flex items-center justify-center h-full">
-        <Item variant="outline" className="px-3 py-1 rounded-2xl bg-card">
+        <Item variant="outline" className="px-3 py-1 rounded-2xl bg-card/50">
           <ItemMedia>
-            <TimerIcon className="text-primary" size={22} />
+            <TimerIcon className="text-primary" size={18} />
           </ItemMedia>
           <ItemContent>
             <h1 className="text-lg text-foreground font-bold font-mono">
