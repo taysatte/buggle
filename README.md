@@ -1,6 +1,6 @@
 
 <center>
-  ![Buggle Logo](https://i.imgur.com/YqE7NAa.png)
+  <image src="https://i.imgur.com/YqE7NAa.png" alt="Buggle Logo" />
 </center>
 
 ---
