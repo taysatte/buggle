@@ -24,7 +24,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="px-4 flex flex-row items-center h-[64px] w-full">
+    <nav className="px-4 flex flex-row items-center h-[64px] w-full py-2">
       <div className="flex-1 flex justify-start h-full">
         <Image
           src="/svgs/buggle-bug-logo.svg"
@@ -33,8 +33,9 @@ export default function Navbar() {
           height={38}
         />
       </div>
+      {/* TODO: Timer component */}
       <div className="flex-1 flex items-center justify-center h-full">
-        <Item variant="outline" className="px-4 py-1 rounded-2xl bg-card">
+        <Item variant="outline" className="px-4 py-1.5 rounded-2xl bg-card">
           <ItemMedia>
             <TimerIcon className="text-primary" size={18} />
           </ItemMedia>
@@ -85,7 +86,7 @@ export default function Navbar() {
             <SettingsIcon className="text-primary" />
           </Button>
         </div>
-
+        {/* TODO: Implement user settings */}
         <div className="h-6">
           <Separator orientation="vertical" decorative />
         </div>

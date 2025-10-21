@@ -3,7 +3,7 @@
 import CodeEditor from "@/components/editor/CodeEditor";
 import Navbar from "@/components/navbar/Navbar";
 import { Allotment } from "allotment";
-import { Card, CardContent, CardAction } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import "allotment/dist/style.css";
 
 const PuzzlePage = () => {
@@ -22,18 +22,18 @@ const PuzzlePage = () => {
               minSize={100}
             >
               <Allotment.Pane minSize={100}>
-                <Card className="bg-card h-[calc(100%-8px)] w-[calc(100%-8px)]">
+                <Card className="bg-card rounded-3xl h-[calc(100%-6px)] w-[calc(100%-6px)]">
                   <CodeEditor />
                 </Card>
               </Allotment.Pane>
               {/* Output Window */}
               <Allotment.Pane minSize={100}>
-                <Card className="h-[calc(100%-8px)] w-[calc(100%-8px)] mt-2 flex justify-center items-center bg-card"></Card>
+                <Card className="h-[calc(100%-6px)] rounded-3xl w-[calc(100%-6px)] mt-1.5 flex justify-center items-center bg-card"></Card>
               </Allotment.Pane>
             </Allotment>
             {/* Puzzle Description */}
             <Allotment.Pane minSize={100}>
-              <Card className="h-full w-[calc(100%-8px)] bg-card ml-2"></Card>
+              <Card className="h-full w-[calc(100%-6px)] rounded-3xl bg-card ml-1.5"></Card>
             </Allotment.Pane>
           </Allotment>
         </div>
