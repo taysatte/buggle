@@ -34,7 +34,7 @@ export default function Navbar() {
         />
       </div>
       <div className="flex-1 flex items-center justify-center h-full">
-        <Item variant="outline" className="px-3 py-1 rounded-2xl bg-card/50">
+        <Item variant="outline" className="px-3 py-1 rounded-2xl bg-card">
           <ItemMedia>
             <TimerIcon className="text-primary" size={18} />
           </ItemMedia>
@@ -48,7 +48,7 @@ export default function Navbar() {
       <div className="flex-1 flex gap-4 justify-end items-center h-full">
         <div className="flex flex-1 gap-2 justify-end items-center h-full">
           <Button
-            className="cursor-pointer rounded-xl relative p-0 flex items-center justify-center"
+            className="cursor-pointer bg-card rounded-xl relative p-0 flex items-center justify-center"
             size="icon"
             variant="outline"
             onClick={handleModeSwitch}

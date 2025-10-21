@@ -21,7 +21,7 @@ const CodeEditor = () => {
     inherit: true,
     rules: [],
     colors: {
-      "editor.background": "#282432",
+      "editor.background": "#1B1922",
       "editor.foreground": "#e2e0e7",
       "editorCursor.foreground": "#ffcc00",
       "editor.lineHighlightBackground": "#332e40",
