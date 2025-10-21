@@ -34,7 +34,7 @@ export default function Navbar() {
         />
       </div>
       <div className="flex-1 flex items-center justify-center h-full">
-        <Item variant="outline" className="px-3 py-1 rounded-2xl bg-card">
+        <Item variant="outline" className="px-4 py-1 rounded-2xl bg-card">
           <ItemMedia>
             <TimerIcon className="text-primary" size={18} />
           </ItemMedia>
@@ -48,8 +48,8 @@ export default function Navbar() {
       <div className="flex-1 flex gap-4 justify-end items-center h-full">
         <div className="flex flex-1 gap-2 justify-end items-center h-full">
           <Button
-            className="cursor-pointer bg-card rounded-xl relative p-0 flex items-center justify-center"
-            size="icon"
+            className="cursor-pointer rounded-xl relative p-0 flex items-center justify-center"
+            size="icon-sm"
             variant="outline"
             onClick={handleModeSwitch}
             aria-label="Toggle theme"
@@ -62,27 +62,24 @@ export default function Navbar() {
                   className={
                     activeTheme === "dark"
                       ? "inline-block text-primary"
-                      : "hidden text-primary"
+                      : "hidden"
                   }
                   aria-hidden
-                  size={30}
                 />
                 <MoonIcon
                   className={
                     activeTheme === "dark"
-                      ? "hidden text-primary"
+                      ? "hidden"
                       : "inline-block text-primary"
                   }
                   aria-hidden
-                  size={30}
                 />
               </>
             )}
           </Button>
-
           <Button
             className="cursor-pointer rounded-xl"
-            size="icon"
+            size="icon-sm"
             variant="outline"
           >
             <SettingsIcon className="text-primary" />
@@ -92,8 +89,7 @@ export default function Navbar() {
         <div className="h-6">
           <Separator orientation="vertical" decorative />
         </div>
-
-        <Avatar>
+        <Avatar className="ml-2">
           <AvatarImage src="https://avatar.iran.liara.run/public" />
           <AvatarFallback>BG</AvatarFallback>
         </Avatar>
