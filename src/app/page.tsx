@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar/Navbar";
 import { Allotment } from "allotment";
 import { Card } from "@/components/ui/card";
 import "allotment/dist/style.css";
+import Output from "@/components/output/Output";
 
 const PuzzlePage = () => {
   return (
@@ -28,7 +29,9 @@ const PuzzlePage = () => {
               </Allotment.Pane>
               {/* Output Window */}
               <Allotment.Pane minSize={100}>
-                <Card className="h-[calc(100%-6px)] rounded-3xl w-[calc(100%-6px)] mt-1.5 flex justify-center items-center bg-card"></Card>
+                <Card className="h-[calc(100%-6px)] rounded-3xl w-[calc(100%-6px)] mt-1.5 flex justify-center items-center bg-card">
+                  <Output output={[]} isLoading={false} testsPassed={null} />
+                </Card>
               </Allotment.Pane>
             </Allotment>
             {/* Puzzle Description */}
