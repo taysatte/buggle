@@ -15,11 +15,14 @@ Sharpen your debugging skills, climb the leaderboards, and share your results wi
 
 ### 📋 Todo
 
-- [ ] Basic UI/UX
+- [x] Basic UI/UX
 - [ ] Code Editor Integration
+  - [ ] Run Code
+  - [ ] Submit Code
+  - [ ] Display Output
 - [ ] Database schema
 - [x] Connect to Backend
-- [ ] Daily Challenge Generation
+- [ ] Daily Puzzle Generation
 - [ ] User Profiles
 - [ ] User Auth
 - [ ] Leaderboards
