@@ -29,7 +29,7 @@ const PuzzlePage = () => {
             >
               <Allotment.Pane minSize={100}>
                 <Card className="bg-card rounded-3xl h-[calc(100%-6px)] w-[calc(100%-6px)]">
-                  <CodeEditor />
+                  {/* <CodeEditor /> */}
                 </Card>
               </Allotment.Pane>
               {/* Output Window */}
