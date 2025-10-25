@@ -45,6 +45,8 @@
 
 :root {
   /** Color Palette **/
+
+  /** Dark Theme Colors */
   --color-dark-base: oklch(0.2134 0.0255 291.13);
   --color-dark-surface: oklch(0.2413 0.0322 289.14);
   --color-dark-overlay: oklch(0.2708 0.0423 289.23);
@@ -60,6 +62,9 @@
   --color-dark-highlight-low: oklch(0.2512 0.0263 287.62);
   --color-dark-highlight-med: oklch(0.3717 0.0358 291.1);
   --color-dark-highlight-high: oklch(0.4399 0.0392 290.42);
+
+  /* TODO: Light theme */
+  /** Light Theme Colors **/
 
   /** Theme Variables **/
   --radius: 0.625rem;

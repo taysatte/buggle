@@ -1,4 +1,5 @@
 const CodeEditor = () => {
-  return;
+  return <div>CodeEditor</div>;
 };
+
 export default CodeEditor;

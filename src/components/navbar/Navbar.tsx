@@ -29,8 +29,9 @@ export default function Navbar() {
         <Image
           src="/svgs/buggle-bug-logo.svg"
           alt="Buggle Bug Logo"
-          width={38}
-          height={38}
+          width={0}
+          height={0}
+          className="w-[38px] h-auto"
         />
       </div>
       {/* TODO: Timer component */}
