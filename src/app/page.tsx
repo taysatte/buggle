@@ -27,6 +27,7 @@ const PuzzlePage = () => {
               vertical
               minSize={100}
             >
+              {/* Code Editor */}
               <Allotment.Pane minSize={100}>
                 <Card className="rounded-3xl h-[calc(100%-6px)] w-[calc(100%-6px)] shadow-md">
                   <CodeEditor />
