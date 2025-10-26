@@ -1,8 +1,9 @@
 "use client";
 
-import CodeEditor from "@/components/editor/CodeEditor";
+import React from "react";
 import Navbar from "@/components/navbar/Navbar";
 import { Card } from "@/components/ui/card";
+import CodeEditor from "@/components/editor/CodeEditor";
 import {
   ResizablePanelGroup,
   ResizablePanel,

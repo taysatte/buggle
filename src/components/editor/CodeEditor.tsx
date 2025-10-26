@@ -1,18 +1,55 @@
+"use client";
+
 import React, { useRef, useState } from "react";
-import { Editor } from "@monaco-editor/react";
-import type * as monaco from "monaco-editor";
+import { Editor, Monaco } from "@monaco-editor/react";
+import { editor } from "monaco-editor";
+import RosePine from "@/themes/rose-pine.json";
+import { puzzle } from "./puzzle";
 
 const CodeEditor = () => {
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>(puzzle);
+  const [language, setLanguage] = useState<string>("javascript");
+  const [theme, setTheme] = useState<string>("RosePine");
+  const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
 
-  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null);
-
-  const options: monaco.editor.IStandaloneEditorConstructionOptions = {
+  const options: editor.IStandaloneEditorConstructionOptions = {
     fontSize: 16,
     minimap: { enabled: false },
+    fontFamily: "Fira Code",
+    fontLigatures: true,
+    contextmenu: false,
+    roundedSelection: true,
+    padding: { bottom: 0, top: 8 },
+    "bracketPairColorization.enabled": false,
+    formatOnPaste: true,
+    suggest: {
+      showFields: false,
+      showFunctions: false,
+      showKeywords: false,
+      showSnippets: false,
+      showReferences: false,
+    },
+    smoothScrolling: true,
+    scrollbar: {
+      useShadows: false,
+    },
+    autoDetectHighContrast: false,
+    "semanticHighlighting.enabled": true,
+  } as editor.IStandaloneEditorConstructionOptions;
+
+  const handleBeforeMount = (monaco: Monaco) => {
+    const { rules, colors } = RosePine;
+
+    monaco.editor.defineTheme(theme, {
+      base: "vs-dark",
+      inherit: true,
+      rules: rules,
+      colors: colors,
+    });
+    monaco.editor.setTheme(theme);
   };
 
-  const handleOnMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
+  const handleOnMount = (editor: editor.IStandaloneCodeEditor) => {
     editorRef.current = editor;
     editor.focus();
   };
@@ -24,11 +61,12 @@ const CodeEditor = () => {
   return (
     <>
       <Editor
-        height="100vh"
-        theme="vs-dark"
-        language="typescript"
+        height="100%"
+        theme={theme}
+        language={language}
         value={value}
         options={options}
+        beforeMount={handleBeforeMount}
         onChange={handleEditorValueChange}
         onMount={handleOnMount}
       />
