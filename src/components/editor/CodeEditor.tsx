@@ -1,37 +1,17 @@
 "use client";
 
 import React, { useRef, useState } from "react";
+import RosePine from "@/themes/rose-pine.json";
 import { Editor, Monaco } from "@monaco-editor/react";
 import { editor } from "monaco-editor";
-import RosePine from "@/themes/rose-pine.json";
 import { puzzle } from "./puzzle";
+import { options } from "./options";
 
 const CodeEditor = () => {
   const [value, setValue] = useState<string>(puzzle);
   const [language, setLanguage] = useState<string>("javascript");
   const [theme, setTheme] = useState<string>("RosePine");
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
-
-  const options: editor.IStandaloneEditorConstructionOptions = {
-    fontSize: 16,
-    fontFamily: "Fira Code",
-    fontLigatures: true,
-    minimap: { enabled: false },
-    contextmenu: false,
-    roundedSelection: true,
-    padding: { bottom: 0, top: 0 },
-    formatOnPaste: true,
-    smoothScrolling: true,
-    "bracketPairColorization.enabled": false,
-    "semanticHighlighting.enabled": true,
-    suggest: {
-      showFields: false,
-      showFunctions: false,
-      showKeywords: false,
-      showSnippets: false,
-      showReferences: false,
-    },
-  } as editor.IStandaloneEditorConstructionOptions;
 
   const handleBeforeMount = (monaco: Monaco) => {
     const { rules, colors } = RosePine;
