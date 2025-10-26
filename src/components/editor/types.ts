@@ -1,0 +1,3 @@
+/**
+ * CodeEditor component props
+ */

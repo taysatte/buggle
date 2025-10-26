@@ -1,0 +1,3 @@
+/**
+ * Navbar component props
+ */
