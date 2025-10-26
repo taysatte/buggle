@@ -12,6 +12,9 @@ export default function Navbar() {
       <div className="flex-1 flex justify-start h-full">
         <Image
           src="/svgs/buggle-bug-logo.svg"
+          fetchPriority="high"
+          priority
+          loading="eager"
           alt="Buggle Bug Logo"
           width={0}
           height={0}

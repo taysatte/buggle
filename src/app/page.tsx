@@ -28,7 +28,7 @@ const PuzzlePage = () => {
               <ResizablePanel
                 collapsible
                 collapsedSize={0}
-                defaultSize={25}
+                defaultSize={30}
                 className="pl-0 p-2"
               >
                 <Card className="shadow-lg h-full w-full p-2">
