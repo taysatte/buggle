@@ -119,8 +119,8 @@
   --accent: oklch(0.269 0 0);
   --accent-foreground: oklch(0.9088 0.0299 289.97);
   --destructive: var(--color-dark-love);
-  --border: oklch(97.584% 0.00759 6.45 / 5%);
-  --input: oklch(27.093% 0.02621 297.7);
+  --border: var(--color-dark-highlight-low);
+  --input: var(--color-dark-surface);
   --ring: oklch(0.556 0 0);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);

@@ -28,13 +28,13 @@ const PuzzlePage = () => {
               minSize={100}
             >
               <Allotment.Pane minSize={100}>
-                <Card className="bg-card rounded-3xl h-[calc(100%-6px)] w-[calc(100%-6px)]">
+                <Card className="rounded-3xl h-[calc(100%-6px)] w-[calc(100%-6px)] shadow-md">
                   <CodeEditor />
                 </Card>
               </Allotment.Pane>
               {/* Output Window */}
               <Allotment.Pane minSize={100}>
-                <Card className="h-[calc(100%-6px)] px-4 rounded-3xl w-[calc(100%-6px)] mt-1.5 flex justify-start items-start bg-card">
+                <Card className="h-[calc(100%-6px)] px-4 rounded-3xl w-[calc(100%-6px)] mt-1.5 flex justify-start items-start shadow-md">
                   <Collapsible>
                     <CollapsibleTrigger>Toggle Output</CollapsibleTrigger>
                     <CollapsibleContent>
@@ -50,7 +50,7 @@ const PuzzlePage = () => {
             </Allotment>
             {/* Puzzle Description */}
             <Allotment.Pane minSize={100}>
-              <Card className="h-full w-[calc(100%-6px)] rounded-3xl bg-card ml-1.5"></Card>
+              <Card className="h-full w-[calc(100%-6px)] rounded-3xl ml-1.5 shadow-md"></Card>
             </Allotment.Pane>
           </Allotment>
         </div>

@@ -20,7 +20,10 @@ export default function Navbar() {
       </div>
       {/* TODO: Timer component */}
       <div className="flex-1 flex items-center justify-center h-full">
-        <Item variant="default" className="px-4 py-1.5 rounded-2xl bg-card">
+        <Item
+          variant="default"
+          className="px-4 py-1.5 rounded-2xl border border-border bg-card shadow-md"
+        >
           <ItemMedia>
             <TimerIcon className="text-primary" size={18} />
           </ItemMedia>
