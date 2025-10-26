@@ -14,14 +14,16 @@ const CodeEditor = () => {
 
   const options: editor.IStandaloneEditorConstructionOptions = {
     fontSize: 16,
-    minimap: { enabled: false },
     fontFamily: "Fira Code",
     fontLigatures: true,
+    minimap: { enabled: false },
     contextmenu: false,
     roundedSelection: true,
-    padding: { bottom: 0, top: 8 },
-    "bracketPairColorization.enabled": false,
+    padding: { bottom: 0, top: 0 },
     formatOnPaste: true,
+    smoothScrolling: true,
+    "bracketPairColorization.enabled": false,
+    "semanticHighlighting.enabled": true,
     suggest: {
       showFields: false,
       showFunctions: false,
@@ -29,29 +31,20 @@ const CodeEditor = () => {
       showSnippets: false,
       showReferences: false,
     },
-    smoothScrolling: true,
-    scrollbar: {
-      useShadows: false,
-    },
-    autoDetectHighContrast: false,
-    "semanticHighlighting.enabled": true,
   } as editor.IStandaloneEditorConstructionOptions;
 
   const handleBeforeMount = (monaco: Monaco) => {
     const { rules, colors } = RosePine;
-
     monaco.editor.defineTheme(theme, {
       base: "vs-dark",
       inherit: true,
       rules: rules,
       colors: colors,
     });
-    monaco.editor.setTheme(theme);
   };
 
   const handleOnMount = (editor: editor.IStandaloneCodeEditor) => {
     editorRef.current = editor;
-    editor.focus();
   };
 
   const handleEditorValueChange = (value: string | undefined) => {

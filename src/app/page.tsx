@@ -21,7 +21,7 @@ const PuzzlePage = () => {
           <ResizablePanel defaultSize={70}>
             <ResizablePanelGroup direction="vertical">
               <ResizablePanel defaultSize={70} className="pl-0 p-2">
-                <Card className="shadow-lg h-full w-full p-2">
+                <Card className="shadow-lg h-full w-full p-4 pl-0">
                   <CodeEditor />
                 </Card>
               </ResizablePanel>
@@ -32,7 +32,7 @@ const PuzzlePage = () => {
                 defaultSize={30}
                 className="pl-0 p-2"
               >
-                <Card className="shadow-lg h-full w-full p-2">
+                <Card className="shadow-lg h-full w-full p-4">
                   <Output output={[]} isLoading={false} testsPassed={null} />
                 </Card>
               </ResizablePanel>
@@ -40,7 +40,7 @@ const PuzzlePage = () => {
           </ResizablePanel>
           <ResizableHandle />
           <ResizablePanel defaultSize={30} className="pr-0 p-2">
-            <Card className="shadow-lg h-full w-full p-2">
+            <Card className="shadow-lg h-full w-full p-4">
               <p className="text-sm text-muted-foreground">
                 Puzzle Description
               </p>
