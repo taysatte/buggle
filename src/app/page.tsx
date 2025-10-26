@@ -3,12 +3,12 @@
 import CodeEditor from "@/components/editor/CodeEditor";
 import Navbar from "@/components/navbar/Navbar";
 import { Card } from "@/components/ui/card";
-import Output from "@/components/output/Output";
 import {
-  Collapsible,
-  CollapsibleTrigger,
-  CollapsibleContent,
-} from "@radix-ui/react-collapsible";
+  ResizablePanelGroup,
+  ResizablePanel,
+  ResizableHandle,
+} from "@/components/ui/resizable";
+import Output from "@/components/output/Output";
 
 const PuzzlePage = () => {
   return (
@@ -16,20 +16,36 @@ const PuzzlePage = () => {
       <Navbar />
       {/* Main content area */}
       <main className="h-[calc(100vh-64px)] px-4 pb-4">
-        <div className="h-full">
-          {/* Code Editor */}
-          <Card className="shadow-md h-full w-full">
-            <CodeEditor />
-          </Card>
-          {/* Output Window */}
-          <Card className="h-full w-full shadow-md">
-            <Output output={[]} isLoading={false} testsPassed={null} />
-          </Card>
-          {/* Puzzle Description */}
-          <Card className="h-full w-full shadow-md">
-            <p>Puzzle Description</p>
-          </Card>
-        </div>
+        <ResizablePanelGroup direction="horizontal">
+          <ResizablePanel defaultSize={70}>
+            <ResizablePanelGroup direction="vertical">
+              <ResizablePanel defaultSize={70} className="pl-0 p-2">
+                <Card className="shadow-md h-full w-full p-2">
+                  <CodeEditor />
+                </Card>
+              </ResizablePanel>
+              <ResizableHandle />
+              <ResizablePanel
+                collapsible
+                collapsedSize={0}
+                defaultSize={25}
+                className="pl-0 p-2"
+              >
+                <Card className="shadow-md h-full w-full p-2">
+                  <Output output={[]} isLoading={false} testsPassed={null} />
+                </Card>
+              </ResizablePanel>
+            </ResizablePanelGroup>
+          </ResizablePanel>
+          <ResizableHandle />
+          <ResizablePanel defaultSize={30} className="pr-0 p-2">
+            <Card className="shadow-md h-full w-full p-2">
+              <p className="text-sm text-muted-foreground">
+                Puzzle Description
+              </p>
+            </Card>
+          </ResizablePanel>
+        </ResizablePanelGroup>
       </main>
     </>
   );
