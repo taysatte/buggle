@@ -8,7 +8,7 @@ import { Separator } from "@/components/ui/separator";
 
 export default function Navbar() {
   return (
-    <nav className="px-4 flex flex-row items-center h-[64px] w-full py-2">
+    <nav className="px-4 flex flex-row items-center h-[64px] w-full pt-2">
       <div className="flex-1 flex justify-start h-full">
         <Image
           src="/svgs/buggle-bug-logo.svg"
@@ -22,7 +22,7 @@ export default function Navbar() {
       <div className="flex-1 flex items-center justify-center h-full">
         <Item
           variant="default"
-          className="px-4 py-1.5 rounded-2xl border border-border bg-card shadow-md"
+          className="px-4 py-1.5 rounded-2xl border border-border bg-card shadow-sm"
         >
           <ItemMedia>
             <TimerIcon className="text-primary" size={18} />
