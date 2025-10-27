@@ -1,4 +1,5 @@
-import React from "react";
+import { SendIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 export interface SubmitButtonProps {
   onSubmit: () => void;
@@ -6,9 +7,9 @@ export interface SubmitButtonProps {
 
 export const SubmitButton = ({ onSubmit }: SubmitButtonProps) => {
   return (
-    <button onClick={onSubmit}>
-      {/* TODO: Implement button styling */}
+    <Button variant="outline" size="sm" onClick={onSubmit}>
+      <SendIcon className="size-4" />
       Submit
-    </button>
+    </Button>
   );
 };

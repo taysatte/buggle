@@ -1,6 +1,5 @@
-import React from "react";
 import { LanguageSelector } from "@/components/editor/LanguageSelector";
-import RunButton from "@/components/editor/RunButton";
+import { RunButton } from "@/components/editor/RunButton";
 import { SubmitButton } from "@/components/editor/SubmitButton";
 
 export interface EditorControlsProps {
@@ -17,10 +16,12 @@ export const EditorControls = ({
   onSubmit,
 }: EditorControlsProps) => {
   return (
-    <div className="flex items-center gap-2 mb-2">
+    <div className="flex justify-between items-center gap-2 mb-4">
+      <div className="flex items-center gap-2">
+        {/* <RunButton onRun={onRun} /> */}
+        {/* <SubmitButton onSubmit={onSubmit} /> */}
+      </div>
       <LanguageSelector language={language} setLanguage={setLanguage} />
-      <RunButton onRun={onRun} />
-      <SubmitButton onSubmit={onSubmit} />
     </div>
   );
 };

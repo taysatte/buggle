@@ -1,16 +1,15 @@
-import React from "react";
+import { Button } from "@/components/ui/button";
+import { PlayIcon } from "lucide-react";
 
-interface RunButtonProps {
+export interface RunButtonProps {
   onRun: () => void;
 }
 
-const RunButton = ({ onRun }: RunButtonProps) => {
+export const RunButton = ({ onRun }: RunButtonProps) => {
   return (
-    <button onClick={onRun}>
-      {/* TODO: Implement button styling */}
+    <Button variant="outline" size="sm" onClick={onRun}>
+      <PlayIcon className="size-4" />
       Run
-    </button>
+    </Button>
   );
 };
-
-export default RunButton;

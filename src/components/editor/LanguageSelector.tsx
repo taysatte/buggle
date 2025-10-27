@@ -1,4 +1,13 @@
-import React from "react";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { languages } from "./languages";
 
 export interface LanguageSelectorProps {
   language: string;
@@ -9,9 +18,38 @@ export const LanguageSelector = ({
   language,
   setLanguage,
 }: LanguageSelectorProps) => {
+  const handleLanguageChange = (value: string) => {
+    setLanguage(value);
+    localStorage.setItem("buggle-selected-language", value);
+  };
+
   return (
-    <div>
-      {/* TODO: Implement language selector UI */}Current: {language}
-    </div>
+    <Select value={language} onValueChange={handleLanguageChange}>
+      <SelectTrigger className="w-fit cursor-pointer shadow-md rounded-lg px-4">
+        <SelectValue />
+      </SelectTrigger>
+      <SelectContent className="rounded-lg">
+        <SelectGroup>
+          <SelectLabel>Languages</SelectLabel>
+          {Object.entries(languages).map(([lang, version]) => {
+            const languageName = lang.toLowerCase();
+            return (
+              <SelectItem
+                className="cursor-pointer flex items-center justify-between gap-2"
+                key={lang}
+                value={lang}
+              >
+                <span className="text-primary/80 font-mono font-bold">
+                  {languageName}
+                </span>
+                <span className="text-xs text-muted/80 font-mono">
+                  ({version})
+                </span>
+              </SelectItem>
+            );
+          })}
+        </SelectGroup>
+      </SelectContent>
+    </Select>
   );
 };
