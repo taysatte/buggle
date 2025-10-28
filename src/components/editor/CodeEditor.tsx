@@ -1,18 +1,32 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useMemo } from "react";
 import RosePine from "@/themes/rose-pine.json";
 import { Editor, Monaco } from "@monaco-editor/react";
 import { editor } from "monaco-editor";
 import { puzzle } from "@/components/editor/puzzle";
 import { options } from "@/components/editor/options";
 import { EditorControls } from "@/components/editor/EditorControls";
+import { useIsMobile } from "@/lib/useMediaQuery";
 
 const CodeEditor = () => {
   const [value, setValue] = useState<string>(puzzle);
   const [language, setLanguage] = useState<string>("javascript");
   const [theme, setTheme] = useState<string>("RosePine");
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);
+  const isMobile = useIsMobile();
+
+  // Responsive editor options
+  const editorOptions = useMemo(() => {
+    return {
+      ...options,
+      fontSize: isMobile ? 12 : 16,
+      wordWrap: isMobile ? "on" : "off",
+      lineNumbers: isMobile ? "off" : "on",
+      folding: !isMobile,
+      glyphMargin: !isMobile,
+    } as editor.IStandaloneEditorConstructionOptions;
+  }, [isMobile]);
 
   const handleBeforeMount = (monaco: Monaco) => {
     const { rules, colors } = RosePine;
@@ -54,7 +68,7 @@ const CodeEditor = () => {
           theme={theme}
           language={language}
           value={value}
-          options={options}
+          options={editorOptions}
           beforeMount={handleBeforeMount}
           onChange={handleEditorValueChange}
           onMount={handleOnMount}
