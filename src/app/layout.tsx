@@ -16,6 +16,11 @@ const firaCode = Fira_Code({
 export const metadata: Metadata = {
   title: "Buggle",
   description: "The daily coding challenge.",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  },
 };
 
 export default function RootLayout({

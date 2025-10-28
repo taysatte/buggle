@@ -48,7 +48,7 @@ const CodeEditor = () => {
         onRun={handleRun}
         onSubmit={handleSubmit}
       />
-      <div className="flex-1">
+      <div className="flex-1 min-h-0">
         <Editor
           height="100%"
           theme={theme}

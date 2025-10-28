@@ -16,7 +16,7 @@ export const EditorControls = ({
   onSubmit,
 }: EditorControlsProps) => {
   return (
-    <div className="flex justify-between items-center gap-2 mb-4">
+    <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-2 mb-2 md:mb-4">
       <div className="flex items-center gap-2">
         {/* <RunButton onRun={onRun} /> */}
         {/* <SubmitButton onSubmit={onSubmit} /> */}
