@@ -25,7 +25,7 @@ export const LanguageSelector = ({
 
   return (
     <Select value={language} onValueChange={handleLanguageChange}>
-      <SelectTrigger className="w-fit cursor-pointer shadow-md rounded-lg px-4">
+      <SelectTrigger className="cursor-pointer shadow-md rounded-lg px-4">
         <SelectValue />
       </SelectTrigger>
       <SelectContent className="rounded-lg">
@@ -39,11 +39,8 @@ export const LanguageSelector = ({
                 key={lang}
                 value={lang}
               >
-                <span className="text-primary/80 font-mono font-bold">
+                <span className="text-foreground/70 font-semibold font-mono">
                   {languageName}
-                </span>
-                <span className="text-xs text-muted/80 font-mono">
-                  ({version})
                 </span>
               </SelectItem>
             );

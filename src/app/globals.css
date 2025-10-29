@@ -59,6 +59,7 @@
   --color-dark-pine: oklch(0.5277 0.0793 227.72);
   --color-dark-foam: oklch(0.8219 0.0543 209.56);
   --color-dark-iris: oklch(0.776 0.0945 304.99);
+  --color-dark-border: oklch(28.565% 0.03096 286.949);
   --color-dark-highlight-low: oklch(0.2512 0.0263 287.62);
   --color-dark-highlight-med: oklch(0.3717 0.0358 291.1);
   --color-dark-highlight-high: oklch(0.4399 0.0392 290.42);
@@ -119,7 +120,7 @@
   --accent: var(--color-dark-iris);
   --accent-foreground: var(--color-dark-text);
   --destructive: var(--color-dark-love);
-  --border: var(--color-dark-highlight-low);
+  --border: var(--color-dark-border);
   --input: var(--color-dark-highlight-med);
   --ring: var(--color-dark-highlight-low);
   --chart-1: oklch(0.488 0.243 264.376);

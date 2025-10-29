@@ -29,10 +29,10 @@ const PuzzlePage = () => {
         {/* Desktop Layout - Hidden on mobile */}
         <div className="hidden md:block h-full">
           <ResizablePanelGroup direction="horizontal">
-            <ResizablePanel defaultSize={70}>
+            <ResizablePanel defaultSize={60}>
               <ResizablePanelGroup direction="vertical">
-                <ResizablePanel defaultSize={70} className="pl-0 p-2">
-                  <Card className="shadow-lg h-full w-full p-4 pl-0">
+                <ResizablePanel defaultSize={60} className="pl-0 p-2">
+                  <Card className="shadow-lg h-full w-full pt-4 pb-4">
                     <CodeEditor />
                   </Card>
                 </ResizablePanel>
@@ -40,7 +40,7 @@ const PuzzlePage = () => {
                 <ResizablePanel
                   collapsible
                   collapsedSize={0}
-                  defaultSize={30}
+                  defaultSize={40}
                   className="pl-0 p-2"
                 >
                   <Card className="shadow-lg h-full w-full p-4">
@@ -50,7 +50,7 @@ const PuzzlePage = () => {
               </ResizablePanelGroup>
             </ResizablePanel>
             <ResizableHandle />
-            <ResizablePanel defaultSize={30} className="pr-0 p-2">
+            <ResizablePanel defaultSize={40} className="pr-0 p-2">
               <Card className="shadow-lg h-full w-full p-4">
                 <p className="text-sm text-muted-foreground">
                   Puzzle Description
@@ -70,9 +70,9 @@ const PuzzlePage = () => {
                   Puzzle Description
                 </p>
                 {isPuzzleOpen ? (
-                  <ChevronUp className="h-4 w-4" />
+                  <ChevronUp className="text-primary h-5 w-5" />
                 ) : (
-                  <ChevronDown className="h-4 w-4" />
+                  <ChevronDown className="text-primary h-5 w-5" />
                 )}
               </CollapsibleTrigger>
               <CollapsibleContent>

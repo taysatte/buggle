@@ -7,7 +7,7 @@ export const options: editor.IStandaloneEditorConstructionOptions = {
   minimap: { enabled: false },
   contextmenu: false,
   roundedSelection: true,
-  padding: { bottom: 0, top: 0 },
+  padding: { bottom: 0, top: 16, right: 0, left: 0 },
   formatOnPaste: true,
   smoothScrolling: true,
   "bracketPairColorization.enabled": false,

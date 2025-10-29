@@ -16,10 +16,10 @@ export const EditorControls = ({
   onSubmit,
 }: EditorControlsProps) => {
   return (
-    <div className="flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-2 mb-2 md:mb-4">
-      <div className="flex items-center gap-2">
-        {/* <RunButton onRun={onRun} /> */}
-        {/* <SubmitButton onSubmit={onSubmit} /> */}
+    <div className="px-4 flex sm:flex-row justify-between items-center sm:items-center gap-2 mb-2 md:mb-4">
+      <div className="flex flex-row items-center gap-2">
+        <RunButton onRun={onRun} />
+        <SubmitButton onSubmit={onSubmit} />
       </div>
       <LanguageSelector language={language} setLanguage={setLanguage} />
     </div>

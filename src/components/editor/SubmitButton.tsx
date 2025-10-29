@@ -1,15 +1,25 @@
 import { SendIcon } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { EditorButton } from "@/components/editor/EditorButton";
 
 export interface SubmitButtonProps {
   onSubmit: () => void;
+  disabled?: boolean;
+  isLoading?: boolean;
 }
 
-export const SubmitButton = ({ onSubmit }: SubmitButtonProps) => {
+export const SubmitButton = ({
+  onSubmit,
+  disabled = false,
+  isLoading = false,
+}: SubmitButtonProps) => {
   return (
-    <Button variant="outline" size="sm" onClick={onSubmit}>
-      <SendIcon className="size-4" />
-      Submit
-    </Button>
+    <EditorButton
+      size="lg"
+      onClick={onSubmit}
+      icon={SendIcon}
+      label="Submit"
+      disabled={disabled}
+      isLoading={isLoading}
+    />
   );
 };

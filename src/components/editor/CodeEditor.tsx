@@ -8,6 +8,7 @@ import { puzzle } from "@/components/editor/puzzle";
 import { options } from "@/components/editor/options";
 import { EditorControls } from "@/components/editor/EditorControls";
 import { useIsMobile } from "@/lib/useMediaQuery";
+import { Separator } from "@/components/ui/separator";
 
 const CodeEditor = () => {
   const [value, setValue] = useState<string>(puzzle);
@@ -20,7 +21,7 @@ const CodeEditor = () => {
   const editorOptions = useMemo(() => {
     return {
       ...options,
-      fontSize: isMobile ? 12 : 16,
+      fontSize: isMobile ? 14 : 16,
       wordWrap: isMobile ? "on" : "off",
       lineNumbers: isMobile ? "off" : "on",
       folding: !isMobile,
