@@ -7,9 +7,9 @@
 
 ### 🪲 Buggle - The Daily Coding Challenge
 
-Buggle is a web application designed to challenge programmers with a new debugging puzzle every day. Inspired by popular daily word games, Buggle presents users with a snippet of code containing a subtle bug. Your task is to identify and fix the anomaly to achieve the correct output within a limited number of attempts.
+Ever played Wordle? Now imagine that, but for debugging code. Every day, Buggle throws you a new code snippet with a sneaky bug hiding in it. Your mission? Find it, fix it, and get the right output - all in a limited number of tries.
 
-Sharpen your debugging skills, climb the leaderboards, and share your results with friends!
+Hunt down bugs, compete on the leaderboards, and flex your debugging prowess with friends!
 
 ---
 
@@ -17,6 +17,7 @@ Sharpen your debugging skills, climb the leaderboards, and share your results wi
 
 - [x] Basic UI/UX
 - [ ] Code Editor Integration
+  - [x] UI
   - [ ] Run Code
   - [ ] Submit Code
   - [ ] Display Output
