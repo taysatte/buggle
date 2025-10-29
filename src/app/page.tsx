@@ -31,7 +31,7 @@ const PuzzlePage = () => {
           <ResizablePanelGroup direction="horizontal">
             <ResizablePanel defaultSize={60}>
               <ResizablePanelGroup direction="vertical">
-                <ResizablePanel defaultSize={60} className="pl-0 p-2">
+                <ResizablePanel defaultSize={70} className="pl-0 p-2">
                   <Card className="shadow-lg h-full w-full pt-4 pb-4">
                     <CodeEditor />
                   </Card>
@@ -40,7 +40,7 @@ const PuzzlePage = () => {
                 <ResizablePanel
                   collapsible
                   collapsedSize={0}
-                  defaultSize={40}
+                  defaultSize={30}
                   className="pl-0 p-2"
                 >
                   <Card className="shadow-lg h-full w-full p-4">
