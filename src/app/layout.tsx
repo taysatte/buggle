@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { ThemeProvider } from "@/components/ui/theme-provider";
 import { Inter, Fira_Code } from "next/font/google";
 import "./globals.css";
@@ -16,11 +16,12 @@ const firaCode = Fira_Code({
 export const metadata: Metadata = {
   title: "Buggle",
   description: "The daily coding challenge.",
-  viewport: {
-    width: "device-width",
-    initialScale: 1,
-    maximumScale: 1,
-  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
 };
 
 export default function RootLayout({
