@@ -5,5 +5,6 @@
 import { RunCodeProps } from "@/app/types";
 
 export interface CodeEditorProps {
-  onRunCode: ({ code, lang }: RunCodeProps) => void;
+  isLoading: boolean;
+  onRunCode: ({ code, language }: RunCodeProps) => void;
 }

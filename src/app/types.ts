@@ -13,9 +13,5 @@ export type LanguageWithVersion = {
 
 export interface RunCodeProps {
   code: string;
-  lang: Languages;
-}
-
-export interface Languages {
-  language: LanguageWithVersion;
+  language: string;
 }

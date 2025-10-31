@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
-  languageVersions,
   getLanguageVersion,
   isSupportedLanguage,
 } from "@/lib/languageVersions";
@@ -31,6 +30,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Get version for language
     const version = getLanguageVersion(language);
     if (!version) {
       return NextResponse.json(

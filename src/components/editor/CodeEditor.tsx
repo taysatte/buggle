@@ -10,7 +10,7 @@ import { EditorControls } from "@/components/editor/EditorControls";
 import { useIsMobile } from "@/lib/useMediaQuery";
 import { CodeEditorProps } from "@/components/editor/types";
 
-const CodeEditor = ({ onRunCode }: CodeEditorProps) => {
+const CodeEditor = ({ onRunCode, isLoading }: CodeEditorProps) => {
   const [value, setValue] = useState<string>(puzzle);
   const [language, setLanguage] = useState<string>("javascript");
   const [version, setVersion] = useState<string>("18.15.0");
@@ -48,8 +48,7 @@ const CodeEditor = ({ onRunCode }: CodeEditorProps) => {
   };
 
   const handleRun = () => {
-    // TODO: Implement run logic
-    console.log(value, language);
+    onRunCode({ code: value, language });
   };
 
   const handleSubmit = () => {
@@ -61,6 +60,7 @@ const CodeEditor = ({ onRunCode }: CodeEditorProps) => {
       <EditorControls
         language={language}
         setLanguage={setLanguage}
+        isLoading={isLoading}
         onRun={handleRun}
         onSubmit={handleSubmit}
       />

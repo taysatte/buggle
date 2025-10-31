@@ -23,16 +23,51 @@ const PuzzlePage = () => {
   const [isOutputOpen, setIsOutputOpen] = useState(false);
   const [output, setOutput] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [testsPassed, setTestsPassed] = useState<Boolean | null>(null);
+  const [testsPassed, setTestsPassed] = useState<boolean | null>(null);
 
-  const handleRunCode = ({ code, lang }: RunCodeProps) => {
-    // set loading state
+  const handleRunCode = async ({ code, language }: RunCodeProps) => {
+    // Set loading state and reset previous results
     setIsLoading(true);
-    // call execution logic to piston api
+    setTestsPassed(null);
+    setOutput([]);
 
-    // on success, update the output and isLoading states
+    try {
+      // Call execution API endpoint
+      const response = await fetch("/api/execute", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ code, language }),
+      });
 
-    // on error, update the error state accordingly
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to execute code");
+      }
+
+      const data = await response.json();
+
+      // Update output with results
+      if (data.error) {
+        // If there's an execution error (stderr), add it to output
+        setOutput([data.error]);
+      } else {
+        // Set the stdout output
+        setOutput(data.output || []);
+      }
+
+      // TODO: Update testsPassed based on test results when implemented
+      setTestsPassed(null);
+    } catch (error) {
+      // Handle errors
+      const errorMessage =
+        error instanceof Error ? error.message : "Execution failed";
+      setOutput([`Error: ${errorMessage}`]);
+      setTestsPassed(null);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -47,7 +82,10 @@ const PuzzlePage = () => {
               <ResizablePanelGroup direction="vertical">
                 <ResizablePanel defaultSize={70} className="pl-0 p-2">
                   <Card className="shadow-lg h-full w-full pt-4 pb-4">
-                    <CodeEditor onRunCode={handleRunCode} />
+                    <CodeEditor
+                      onRunCode={handleRunCode}
+                      isLoading={isLoading}
+                    />
                   </Card>
                 </ResizablePanel>
                 <ResizableHandle />
@@ -58,7 +96,11 @@ const PuzzlePage = () => {
                   className="pl-0 p-2"
                 >
                   <Card className="shadow-lg h-full w-full p-4">
-                    <Output output={[]} isLoading={false} testsPassed={null} />
+                    <Output
+                      output={output}
+                      isLoading={isLoading}
+                      testsPassed={testsPassed}
+                    />
                   </Card>
                 </ResizablePanel>
               </ResizablePanelGroup>
@@ -101,7 +143,7 @@ const PuzzlePage = () => {
 
           {/* Code Editor */}
           <Card className="shadow-lg flex-1 p-3 overflow-hidden">
-            <CodeEditor onRunCode={handleRunCode} />
+            <CodeEditor onRunCode={handleRunCode} isLoading={isLoading} />
           </Card>
 
           {/* Output - Collapsible */}
@@ -119,7 +161,11 @@ const PuzzlePage = () => {
               </CollapsibleTrigger>
               <CollapsibleContent>
                 <div className="px-3 pb-3 max-h-[200px] overflow-auto">
-                  <Output output={[]} isLoading={false} testsPassed={null} />
+                  <Output
+                    output={output}
+                    isLoading={isLoading}
+                    testsPassed={testsPassed}
+                  />
                 </div>
               </CollapsibleContent>
             </Card>
