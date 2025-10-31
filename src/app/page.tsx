@@ -120,15 +120,13 @@ const PuzzlePage = () => {
         <div className="md:hidden flex flex-col h-full gap-2">
           {/* Puzzle Description - Collapsible */}
           <Collapsible open={isPuzzleOpen} onOpenChange={setIsPuzzleOpen}>
-            <Card className="shadow-lg">
-              <CollapsibleTrigger className="w-full p-3 flex items-center justify-between">
-                <p className="text-sm font-medium text-muted-foreground">
-                  Puzzle Description
-                </p>
+            <Card className="shadow-lg p-0">
+              <CollapsibleTrigger className="w-full p-3 flex items-center justify-between transition-all duration-100 hover:bg-primary/5">
+                <p className="text-lg font-bold text-primary">sub-array</p>
                 {isPuzzleOpen ? (
-                  <ChevronUp className="text-primary h-5 w-5" />
+                  <ChevronUp className="text-primary/60 h-4 w-4" />
                 ) : (
-                  <ChevronDown className="text-primary h-5 w-5" />
+                  <ChevronDown className="text-primary/60 h-4 w-4" />
                 )}
               </CollapsibleTrigger>
               <CollapsibleContent>
@@ -142,21 +140,21 @@ const PuzzlePage = () => {
           </Collapsible>
 
           {/* Code Editor */}
-          <Card className="shadow-lg flex-1 p-3 overflow-hidden">
+          <Card className="shadow-lg flex-1 py-4 overflow-hidden">
             <CodeEditor onRunCode={handleRunCode} isLoading={isLoading} />
           </Card>
 
           {/* Output - Collapsible */}
           <Collapsible open={isOutputOpen} onOpenChange={setIsOutputOpen}>
-            <Card className="shadow-lg">
+            <Card className="shadow-lg p-0">
               <CollapsibleTrigger className="w-full p-3 flex items-center justify-between">
-                <p className="text-sm font-medium text-muted-foreground">
-                  Output
+                <p className="text-sm font-semibold text-muted-foreground">
+                  output
                 </p>
                 {isOutputOpen ? (
-                  <ChevronUp className="h-4 w-4" />
+                  <ChevronUp className="text-primary/60 h-4 w-4" />
                 ) : (
-                  <ChevronDown className="h-4 w-4" />
+                  <ChevronDown className="text-primary/60 h-4 w-4" />
                 )}
               </CollapsibleTrigger>
               <CollapsibleContent>

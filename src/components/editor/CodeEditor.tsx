@@ -21,7 +21,7 @@ const CodeEditor = ({ onRunCode, isLoading }: CodeEditorProps) => {
   const editorOptions = useMemo(() => {
     return {
       ...options,
-      fontSize: isMobile ? 14 : 16,
+      fontSize: isMobile ? 15 : 16,
       wordWrap: isMobile ? "on" : "off",
       lineNumbers: isMobile ? "off" : "on",
       folding: !isMobile,

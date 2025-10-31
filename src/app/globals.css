@@ -138,12 +138,6 @@
   --sidebar-ring: var(--color-dark-muted);
 }
 
-.allotment-theme {
-  /* --separator-border: var(--color-border); */
-  --separator-border: transparent;
-  --focus-border: var(--color-border);
-}
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
