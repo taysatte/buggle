@@ -10,6 +10,7 @@ export const options: editor.IStandaloneEditorConstructionOptions = {
   padding: { bottom: 0, top: 16, right: 0, left: 0 },
   formatOnPaste: true,
   smoothScrolling: true,
+  automaticLayout: true,
   "bracketPairColorization.enabled": false,
   "semanticHighlighting.enabled": true,
   suggest: {

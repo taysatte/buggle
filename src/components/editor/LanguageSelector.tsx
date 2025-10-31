@@ -7,7 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { languages } from "./languages";
+import { languageVersions } from "@/lib/languageVersions";
 
 export interface LanguageSelectorProps {
   language: string;
@@ -31,7 +31,7 @@ export const LanguageSelector = ({
       <SelectContent className="rounded-lg">
         <SelectGroup>
           <SelectLabel>Languages</SelectLabel>
-          {Object.entries(languages).map(([lang, version]) => {
+          {Object.entries(languageVersions).map(([lang, version]) => {
             const languageName = lang.toLowerCase();
             return (
               <SelectItem

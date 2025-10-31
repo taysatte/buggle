@@ -16,10 +16,24 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { RunCodeProps } from "@/app/types";
 
 const PuzzlePage = () => {
   const [isPuzzleOpen, setIsPuzzleOpen] = useState(false);
   const [isOutputOpen, setIsOutputOpen] = useState(false);
+  const [output, setOutput] = useState<string[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [testsPassed, setTestsPassed] = useState<Boolean | null>(null);
+
+  const handleRunCode = ({ code, lang }: RunCodeProps) => {
+    // set loading state
+    setIsLoading(true);
+    // call execution logic to piston api
+
+    // on success, update the output and isLoading states
+
+    // on error, update the error state accordingly
+  };
 
   return (
     <>
@@ -33,7 +47,7 @@ const PuzzlePage = () => {
               <ResizablePanelGroup direction="vertical">
                 <ResizablePanel defaultSize={70} className="pl-0 p-2">
                   <Card className="shadow-lg h-full w-full pt-4 pb-4">
-                    <CodeEditor />
+                    <CodeEditor onRunCode={handleRunCode} />
                   </Card>
                 </ResizablePanel>
                 <ResizableHandle />
@@ -87,7 +101,7 @@ const PuzzlePage = () => {
 
           {/* Code Editor */}
           <Card className="shadow-lg flex-1 p-3 overflow-hidden">
-            <CodeEditor />
+            <CodeEditor onRunCode={handleRunCode} />
           </Card>
 
           {/* Output - Collapsible */}
