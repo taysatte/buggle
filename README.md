@@ -15,12 +15,22 @@ Hunt down bugs, compete on the leaderboards, and flex your debugging prowess wit
 
 ### 📋 Todo
 
-- [x] Basic UI/UX
+- [ ] Basic UI/UX
+  - [ ] Navigation
+  - [x] Timer
+  - [ ] User Settings
+  - [ ] Leaderboards
+  - [ ] Social Sharing
+  - [ ] Hints System
+  - [ ] Responsive Design
+  - [x] Editor
+  - [ ] Output
+  - [ ] Puzzle Description
 - [ ] Code Editor Integration
-  - [x] UI
   - [x] Run Code
   - [ ] Submit Code
   - [x] Display Output
+  - [ ] Reset Code
 - [x] Basic Database schema
 - [x] Connect to Backend
 - [x] Daily Puzzle Generation
