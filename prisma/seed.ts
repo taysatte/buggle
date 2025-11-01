@@ -112,6 +112,29 @@ console.log(sumArray([-1, 0, 1])); // Expected: 0`,
     }`
   );
   console.log(`   - Total test cases: ${puzzle.testCases.length}`);
+
+  // Schedule puzzle for today
+  const today = new Date();
+  const todayDate = new Date(
+    Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate())
+  );
+
+  const dailyPuzzle = await prisma.dailyPuzzle.upsert({
+    where: {
+      date: todayDate,
+    },
+    create: {
+      date: todayDate,
+      puzzleId: puzzle.id,
+    },
+    update: {
+      puzzleId: puzzle.id, // Update if already exists
+    },
+  });
+
+  console.log(
+    `✅ Scheduled puzzle for today (${todayDate.toISOString().split("T")[0]})`
+  );
   console.log("🎉 Seeding completed!");
 }
 

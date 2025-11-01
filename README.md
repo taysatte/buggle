@@ -18,12 +18,12 @@ Hunt down bugs, compete on the leaderboards, and flex your debugging prowess wit
 - [x] Basic UI/UX
 - [ ] Code Editor Integration
   - [x] UI
-  - [ ] Run Code
+  - [x] Run Code
   - [ ] Submit Code
-  - [ ] Display Output
-- [ ] Database schema
+  - [x] Display Output
+- [x] Basic Database schema
 - [x] Connect to Backend
-- [ ] Daily Puzzle Generation
+- [x] Daily Puzzle Generation
 - [ ] User Profiles
 - [ ] User Auth
 - [ ] Leaderboards
