@@ -40,14 +40,23 @@ model Puzzle {
   id          Int      @id @default(autoincrement())
   title       String
   description String
+  starterCode String   @db.Text // Buggy/template code shown to users
+  solutionCode String? @db.Text // Optional: correct solution (for hints/validation)
+  difficulty  String?  // e.g., "easy", "medium", "hard"
+  hints       String?  @db.Text // Optional hints for users
+  language    String?  // Default language for this puzzle
   testCases   TestCase[]
   submissions Submission[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
 
 model TestCase {
   id             Int    @id @default(autoincrement())
-  input          String
-  expectedOutput String
+  input          String @db.Text // JSON string or raw input
+  expectedOutput String @db.Text // Expected output as string
+  isPublic       Boolean @default(true) // Visible to users vs hidden validation tests
   puzzleId       Int
-  puzzle         Puzzle @relation(fields: [puzzleId], references: [id])
+  puzzle         Puzzle @relation(fields: [puzzleId], references: [id], onDelete: Cascade)
+  createdAt      DateTime @default(now())
 }

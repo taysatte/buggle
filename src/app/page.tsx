@@ -32,7 +32,6 @@ const PuzzlePage = () => {
     setOutput([]);
 
     try {
-      // Call execution API endpoint
       const response = await fetch("/api/execute", {
         method: "POST",
         headers: {
@@ -47,13 +46,9 @@ const PuzzlePage = () => {
       }
 
       const data = await response.json();
-
-      // Update output with results
       if (data.error) {
-        // If there's an execution error (stderr), add it to output
         setOutput([data.error]);
       } else {
-        // Set the stdout output
         setOutput(data.output || []);
       }
 
