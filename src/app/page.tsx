@@ -1,8 +1,10 @@
-"use server";
-
 import { getTodayPuzzle } from "@/lib/puzzle";
 import { notFound } from "next/navigation";
 import PuzzlePageClient from "@/components/puzzle/PuzzlePageClient";
+
+// Force dynamic rendering - puzzle changes daily
+export const dynamic = "force-dynamic";
+export const revalidate = 0; // Disable caching for daily puzzle
 
 const PuzzlePage = async () => {
   const dailyPuzzle = await getTodayPuzzle();
