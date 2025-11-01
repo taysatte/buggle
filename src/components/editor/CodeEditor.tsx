@@ -9,10 +9,11 @@ import { options } from "@/components/editor/options";
 import { EditorControls } from "@/components/editor/EditorControls";
 import { useIsMobile } from "@/lib/useMediaQuery";
 import { CodeEditorProps } from "@/components/editor/types";
+import { type Language, isSupportedLanguage } from "@/lib/languageVersions";
 
 const CodeEditor = ({ onRunCode, isLoading }: CodeEditorProps) => {
   const [value, setValue] = useState<string>(puzzle);
-  const [language, setLanguage] = useState<string>("javascript");
+  const [language, setLanguage] = useState<Language>("javascript");
   const [version, setVersion] = useState<string>("18.15.0");
   const [theme, setTheme] = useState<string>("RosePine");
   const editorRef = useRef<editor.IStandaloneCodeEditor | null>(null);

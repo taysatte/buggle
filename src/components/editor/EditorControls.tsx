@@ -1,10 +1,11 @@
 import { LanguageSelector } from "@/components/editor/LanguageSelector";
 import { RunButton } from "@/components/editor/RunButton";
 import { SubmitButton } from "@/components/editor/SubmitButton";
+import { type Language } from "@/lib/languageVersions";
 
 export interface EditorControlsProps {
-  language: string;
-  setLanguage: (language: string) => void;
+  language: Language;
+  setLanguage: (language: Language) => void;
   onRun: () => void;
   onSubmit: () => void;
   isLoading?: boolean;

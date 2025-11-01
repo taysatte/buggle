@@ -1,17 +1,9 @@
-import { languageVersions, type Language } from "@/lib/languageVersions";
+import { type Language } from "@/lib/languageVersions";
 
-// Re-export for backwards compatibility
-export const languages = languageVersions;
-export type { Language };
-
-export type LanguageWithVersion = {
-  [K in Language]: {
-    language: K;
-    version: (typeof languages)[K];
-  };
-}[Language];
-
+/**
+ * Props for executing code
+ */
 export interface RunCodeProps {
   code: string;
-  language: string;
+  language: Language; // Changed from string to Language for type safety
 }

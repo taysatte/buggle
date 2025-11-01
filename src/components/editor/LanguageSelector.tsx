@@ -7,11 +7,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { languageVersions } from "@/lib/languageVersions";
+import { languageVersions, type Language } from "@/lib/languageVersions";
 
 export interface LanguageSelectorProps {
-  language: string;
-  setLanguage: (language: string) => void;
+  language: Language;
+  setLanguage: (language: Language) => void;
 }
 
 export const LanguageSelector = ({
@@ -19,8 +19,11 @@ export const LanguageSelector = ({
   setLanguage,
 }: LanguageSelectorProps) => {
   const handleLanguageChange = (value: string) => {
-    setLanguage(value);
-    localStorage.setItem("buggle-selected-language", value);
+    // Explicit type guard: only setLanguage if value is a supported Language
+    if (Object.keys(languageVersions).includes(value)) {
+      setLanguage(value as Language);
+      localStorage.setItem("buggle-selected-language", value);
+    }
   };
 
   return (
